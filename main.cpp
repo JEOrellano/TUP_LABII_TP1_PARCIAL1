@@ -16,7 +16,6 @@ const char *INTERPRETES = "Interpretes.dat";
 
 int main(){
     int opc;
-    system("pause");
     while(true){
         menuPrincipal();
         cin >> opc;
