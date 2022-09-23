@@ -7,6 +7,8 @@ void menuCanciones();
 
 void menuPrincipal();
 
+void menuGeneros();
+
 /// DEFINICIONES DE MENUS
 
 // MENU CANCIONES
@@ -34,7 +36,7 @@ void menuCanciones(){
                     }
                     else{
                         if(valorAgregarCancion == -1){
-                            cout << "ERROR FECHAS DE ESTRENO O FALLO APERTURA DE ARCHIVO" << endl;
+                            cout << "ERROR DATOS INVALIDOS INGRESADOS O FALLO APERTURA DE ARCHIVO" << endl;
                             return;
                         }
                     }
@@ -99,7 +101,7 @@ void menuInterpretes(){
                     }
                     else{
                         if(valorAgregarInterprete == -1){
-                            cout << "ERROR FECHAS DE ESTRENO O FALLO APERTURA DE ARCHIVO" << endl;
+                            cout << "ERROR DATOS INVALIDOS INGRESADOS O FALLO APERTURA DE ARCHIVO" << endl;
                             return;
                         }
                     }
@@ -139,6 +141,64 @@ void menuInterpretes(){
     return;
 }
 
+/// MENU GENEROS
+
+void menuGeneros(){
+    int opc, valorAgregarGenero;
+    while(true){
+        system("cls");
+        cout << "MENU GENEROS" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "1) AGREGAR GENERO" << endl;
+        cout << "2) LISTAR GENERO POR ID" << endl;
+        cout << "3) LISTAR TODOS LOS GENEROS" << endl;
+        cout << "4) MODIFICAR TIPO DE INSTRUMENTACION" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "0) VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cin >> opc;
+        system("cls");
+        switch(opc){
+            case 1: valorAgregarGenero = agregarRegistroGenero();
+                    if(valorAgregarGenero == -2){
+                        cout << "FALLO GRABAR EN DISCO " << endl;
+                        return;
+                    }
+                    else{
+                        if(valorAgregarGenero == -1){
+                            cout << "DATOS INVALIDOS O FALLO APERTURA DE ARCHIVO" << endl;
+                            return;
+                        }
+                    }
+                    cout << "GENERO CARGADO" << endl;
+                break;
+            case 2: if(mostrarGeneroPorId() == false){
+                        cout << "ERROR EN LA BUSQUEDA DEL GENERO" << endl;
+                    }
+                    else{
+                        cout << "GENERO LISTADO" << endl;
+                    }
+                break;
+            case 3: mostrarGenero();
+                break;
+            case 4: if(modificarTipoInstrumentacionGenero() == false){
+                        cout << "ERROR EN LA MODIFICACION DEL REGISTRO " << endl;
+                    }
+                    else{
+                        cout << "REGISTRO MODIFICADO" << endl;
+                    }
+                break;
+            case 0: return;
+                break;
+            default: cout << "OPCION INCORRECTA" << endl;
+                break;
+        }
+        cout << endl;
+        system("pause");
+    }
+    return;
+}
+
 /// MENU PRINCIPAL
 void menuPrincipal(){
     system("cls");
@@ -146,8 +206,9 @@ void menuPrincipal(){
     cout << "---------------------" << endl;
     cout << "1) MENU CANCIONES" << endl;
     cout << "2) MENU INTERPRETES" << endl;
-    cout << "3) MENU REPORTES" << endl;
-    cout << "4) MENU CONFIGURACION" << endl;
+    cout << "3) MENU GENEROS" << endl;
+    cout << "4) MENU REPORTES" << endl;
+    cout << "5) MENU CONFIGURACION" << endl;
     cout << "---------------------" << endl;
     cout << "0) FIN DEL PROGRAMA" << endl;
     cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";

@@ -150,4 +150,22 @@ bool Interprete::GrabarEnDisco(){
     return escribio;
 }
 
+/// PROTOTIPO VALIDAR INTERPRETE
+
+bool validarInterprete(int idI);
+
+/// DEFINICION VALIDAR INTERPRETE;
+
+bool validarInterprete(int idI){
+    Interprete cantor;
+    int pos = 0;
+    while(cantor.LeerDeDisco(pos)){
+        if(idI == cantor.getIdInterprete()){
+            return cantor.getEstado();
+        }
+        pos++;
+    }
+    return false;
+}
+
 #endif // CLSINTERPRETE_H_INCLUDED

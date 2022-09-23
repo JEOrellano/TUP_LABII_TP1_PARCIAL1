@@ -3,8 +3,6 @@
 
 /// PROTOTIPOS FUNCIONES GLOBALES INTERPRETE
 
-// bool validarFecha(Fecha f);
-
 int contarRegistrInterprete();
 
 Interprete cargarInterprete();
@@ -16,12 +14,6 @@ void mostrarInterprete();
 /// DEFINICIONES FUNCIONES GLOBALES INTERPRETE
 
 // PUNTO 1 AGREGAR INTERPRETE
-/*
-bool validarFecha(Fecha f){
-    /// VALIDACION DE FECHA IGUAL O MENOR A LA ACTUAL
-    return true;
-}
-*/
 
 int contarRegistroInterprete(){
     int cant;
@@ -41,7 +33,11 @@ Interprete cargarInterprete(){
     int idI;
     Fecha fecha;
     cout << "INGRESE FECHA DE INICIO DE ACTIVIDAD: " << endl;
-    fecha.Cargar();
+    if(fecha.Cargar() == false){
+        cout << "FALLO CARGAR FECHA" << endl;
+        cantor.setEstado(false);
+        return cantor;
+    }
 
     if(validarFecha(fecha) == false){
         cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
@@ -74,7 +70,9 @@ int buscarIdInterprete(int idI){
     int pos = 0;
     while(cantor.LeerDeDisco(pos)){
         if(idI == cantor.getIdInterprete()){
-            return pos;
+            if(cantor.getEstado()){
+                return pos;
+            }
         }
         pos++;
     }
@@ -142,26 +140,24 @@ bool sobreEscribirRegistroInterprete(Interprete cantor, int pos){
 
 bool modificarGeneroPrincipalInterprete(){
     Interprete cantor;
-    int idI, pos;
-    Fecha fecha;
-    /// buscar la cancion a modificar fecha de estreno
-    cout << "INGRESE EL ID INTERPRETE DEL REGISTRO A MODIFICAR FECHA DE INICIO DE ACTIVIDAD: ";
+    int idI, pos, genMus;
+    /// buscar el interprete a modificar genero musical principal
+    cout << "INGRESE EL ID INTERPRETE DEL REGISTRO A MODIFICAR GENERO MUSICAL PRINCIPAL: ";
     cin >> idI;
-    /// leer si existe la cancion
+    /// leer si existe el interprete
     pos = buscarIdInterprete(idI);
     if(pos == -1){
         cout << "NO EXISTE EL ID DE INTERPRETE EN EL ARCHIVO" << endl;
         return false;
     }
     cantor = leerRegistroInterprete(pos);
-    /// cambiar la fecha del campo
-    cout << "INGRESE LA NUEVA FECHA DE INICIO DE ACTIVIDAD: " << endl;
-    fecha.Cargar();
-    if(validarFecha(fecha) == false){
-        cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
+    /// cambiar el genero musical del campo
+    cout << "INGRESE EL NUEVO GENERO MUSICAL PRINCIPAL: " << endl;
+    cin >> genMus;
+    if(cantor.setGenero(genMus) == false){
+        cout << "EL GENERO MUSICAL INGRESADO ES INVALIDO. DEBER SER 1 AL 10" << endl;
         return false;
     }
-    cantor.setFechaInicioActividad(fecha);
     /// sobreescribir el registro
     return sobreEscribirRegistroInterprete(cantor, pos);
 }
