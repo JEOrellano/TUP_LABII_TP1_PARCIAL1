@@ -3,9 +3,9 @@
 
 class Fecha{
     private:
-        int dia;
-        int mes;
-        int anio;
+        int dia; /// 1 - 31
+        int mes; /// 1 - 12
+        int anio; /// menor o igual al actual
 
     public:
         /// CONSTRUCTOR
@@ -16,33 +16,61 @@ class Fecha{
         }
 
         /// METODOS
-        void Cargar();
+        bool Cargar();
         void Mostrar();
 
         /// SETS
-        void setDia(int d){dia = d;}
-        void setMes(int m){mes = m;}
-        void setAnio(int a){anio = a;}
+        bool setDia(int d){
+            if (d >= 1 && d <= 31){
+                dia = d;
+                return true;
+            }
+            return false;
+        }
+        bool setMes(int m){
+            if (m >= 1 && m <= 12){
+                mes = m;
+                return true;
+            }
+            return false;
+        }
+        bool setAnio(int a){
+            if (a >= 0){
+                anio = a;
+                return true;
+            }
+            return false;
+        }
 
         /// GEST
         int getDia(){return dia;}
         int getMes(){return mes;}
         int getAnio(){return anio;}
+
+        /// DESTRUCTOR
+        ~Fecha(){}
 };
 
-void Fecha::Cargar(){
-    int d, m, a;
-
+bool Fecha::Cargar(){
     cout << "DIA: ";
-    cin >> d;
+    cin >> dia;
+    if(!setDia(dia)){
+        cout << "EL DIA DEBE ESTAR ENTRE 1 Y 31" << endl;
+        return false;
+    }
     cout << "MES: ";
-    cin >> m;
+    cin >> mes;
+    if(!setMes(mes)){
+        cout << "EL MES DEBE ESTAR ENTRE 1 Y 12" << endl;
+        return false;
+    }
     cout << "ANIO: ";
-    cin >> a;
-    /// falta validar fecha
-    setDia(d);
-    setMes(m);
-    setAnio(a);
+    cin >> anio;
+    if(!setAnio(anio)){
+        cout << "EL AONIO DEBE SER POSTIVO" << endl;
+        return false;
+    }
+    return true;
 }
 
 void Fecha::Mostrar(){
@@ -54,7 +82,27 @@ bool validarFecha(Fecha f);
 
 /// DEFINICION VALIDAR FECHA
 bool validarFecha(Fecha f){
-    /// VALIDACION DE FECHA IGUAL O MENOR A LA ACTUAL
+    time_t tiempo;
+    struct tm *hoy;
+
+    tiempo = time(NULL);
+    hoy = localtime(&tiempo);
+    if(f.getAnio() > (1900+hoy->tm_year)){
+        cout << "EL ANIO DEBE SER MENOR O IGUAL AL ACTUAL" << endl;
+        return false;
+    }
+    else{
+        if(f.getMes() > (hoy->tm_mon+1) && f.getAnio() == (1900+hoy->tm_year)){
+        cout << "EL MES DEBE SER MENOR O IGUAL AL DEL CORRIENTE ANIO" << endl;
+        return false;
+        }
+        else{
+            if(f.getDia() > hoy->tm_mday && f.getMes() == (hoy->tm_mon+1) && f.getAnio() == (1900+hoy->tm_year)){
+                cout << "LA FECHA DEBE SER MENOR O IGUAL A LA ACTUAL" << endl;
+                return false;
+            }
+        }
+    }
     return true;
 }
 

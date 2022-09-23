@@ -3,9 +3,7 @@
 
 /// PROTOTIPOS FUNCIONES GLOBALES CANCION
 
-// bool validarFecha(Fecha f);
-
-int contarRegistrCancion();
+int contarRegistroCancion();
 
 Cancion cargarCancion();
 
@@ -16,12 +14,6 @@ void mostrarCancion();
 /// DEFINICIONES FUNCIONES GLOBALES CANCION
 
 // PUNTO 1 AGREGAR CANCION
-/*
-bool validarFecha(Fecha f){
-    /// VALIDACION DE FECHA IGUAL O MENOR A LA ACTUAL
-    return true;
-}
-*/
 
 int contarRegistroCancion(){
     int cant;
@@ -38,21 +30,39 @@ int contarRegistroCancion(){
 
 Cancion cargarCancion(){
     Cancion tema;
-    int idC;
+    int idC, idI;
     Fecha fecha;
+
+    cout << "ID INTERPRETE: ";
+    cin >> idI;
+    if(validarInterprete(idI) == false){
+        cout << "EL INTERPRETE INGERSADO ES INVALIDO. NO ESTA REGISTRADO O FUE BORRADO" << endl;
+        tema.setEstado(false);
+        return tema;
+    }
     cout << "INGRESE FECHA DE ESTRENO: " << endl;
-    fecha.Cargar();
+    if(fecha.Cargar() == false){
+        cout << "FALLO CARGAR FECHA" << endl;
+        tema.setEstado(false);
+        return tema;
+    }
 
     if(validarFecha(fecha) == false){
         cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
         tema.setEstado(false);
         return tema;
     }
+
     idC = contarRegistroCancion() + 1;
     if(idC == 1){
         cout << "FALLO APERTURA DEL ARCHIVO, NO EXISTE O ESTA VACIO" << endl;
     }
-    tema.Cargar(idC, fecha);
+
+    if(tema.Cargar(idC, fecha, idI) == false){
+        cout << "FALLO CARGAR TEMA" << endl;
+        tema.setEstado(false);
+        return tema;
+    }
     return tema;
 }
 
@@ -74,7 +84,9 @@ int buscarIdCancion(int idC){
     int pos = 0;
     while(tema.LeerDeDisco(pos)){
         if(idC == tema.getIdCancion()){
-            return pos;
+            if(tema.getEstado()){
+                return pos;
+            }
         }
         pos++;
     }
@@ -156,7 +168,11 @@ bool modificarFechaEstrenoCancion(){
     tema = leerRegistroCancion(pos);
     /// cambiar la categoria del campo
     cout << "INGRESE LA NUEVA FECHA DE ESTRENO: " << endl;
-    fecha.Cargar();
+    if(fecha.Cargar() == false){
+        cout << "FALLO CARGAR FECHA" << endl;
+        tema.setEstado(false);
+        return false;
+    }
     if(validarFecha(fecha) == false){
         cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
         return false;

@@ -3,7 +3,7 @@
 
 class Cancion{
     private:
-        int idCancion; // no se repite autonumerico consecutivo
+        int idCancion; // entero no se repite autonumerico consecutivo
         char nombre[30];
         char nombreAutor[30];
         int idInterprete; // debe existir en el archivo interprete
@@ -26,7 +26,7 @@ class Cancion{
             estado = e;
         }
         /// METODOS
-        bool Cargar(int idC, Fecha fecha);
+        bool Cargar(int idC, Fecha fecha, int idI);
         void Mostrar();
         bool LeerDeDisco(int pos);
         bool GrabarEnDisco();
@@ -37,7 +37,13 @@ class Cancion{
         void setNombreAutor(const char *n){strcpy(nombreAutor, n);}
         void setIdInterprete(int i){idInterprete = i;}
         void setFechaEstreno(Fecha f){fechaEstreno = f;}
-        void setDuracion(float t){duracion = t;}
+        bool setDuracion(float t){
+            if(t > 0){
+                duracion = t;
+                return true;
+            }
+            return false;
+        }
         bool setGenero(int g){
             if(g >= 1 && g <= 10){
                 genero = g;
@@ -61,7 +67,7 @@ class Cancion{
         ~Cancion(){}
 };
 
-bool Cancion::Cargar(int idC, Fecha fecha){
+bool Cancion::Cargar(int idC, Fecha fecha, int idI){
     //cout << "ID CANCION: ";
     //cin >> idCancion;
     setIdCancion(idC);
@@ -74,9 +80,9 @@ bool Cancion::Cargar(int idC, Fecha fecha){
     cargarCadena(nombreAutor, 29);
     setNombreAutor(nombreAutor);
 
-    cout << "ID INTERPRETE: ";
-    cin >> idInterprete;
-    setIdInterprete(idInterprete);
+    //cout << "ID INTERPRETE: ";
+    //cin >> idInterprete;
+    setIdInterprete(idI);
 
     //cout << "FECHA DE ESTRENO: ";
     //fechaEstreno.Cargar();
@@ -84,7 +90,10 @@ bool Cancion::Cargar(int idC, Fecha fecha){
 
     cout << "DURACION DE LA CANCION: ";
     cin >> duracion;
-    setDuracion(duracion);
+    if(!setDuracion(duracion)){
+        cout << "LA DURACION DEBE SER UN VALOR POSITIVO" << endl;
+        return false;
+    }
 
     cout << "GENERO MUSICAL: ";
     cin >> genero;
