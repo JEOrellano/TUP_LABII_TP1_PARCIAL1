@@ -63,3 +63,35 @@
 
 1663879237 c:\users\samor\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\opcionesmenu.h
 
+1663980757 source:c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\main.cpp
+	<iostream>
+	<cstring>
+	<ctime>
+	"funcionesGlobales.h"
+	"clsFecha.h"
+	"clsCancion.h"
+	"clsInterprete.h"
+	"clsGenero.h"
+	"funcionesGlobalesCancion.h"
+	"funcionesGlobalesInterprete.h"
+	"funcionesGlobalesGenero.h"
+	"opcionesMenu.h"
+
+1663980757 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\funcionesglobales.h
+
+1663980757 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\clsfecha.h
+
+1663981382 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\clscancion.h
+
+1663980757 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\clsinterprete.h
+
+1663980757 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\clsgenero.h
+
+1663980757 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\funcionesglobalescancion.h
+
+1664047101 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\funcionesglobalesinterprete.h
+
+1663980757 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\funcionesglobalesgenero.h
+
+1663981382 c:\users\anthony\desktop\parcial_1_lab_ii\tup_labii_tp1_parcial1\opcionesmenu.h
+

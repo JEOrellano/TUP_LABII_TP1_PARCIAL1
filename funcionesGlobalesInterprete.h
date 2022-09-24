@@ -46,7 +46,7 @@ Interprete cargarInterprete(){
     }
     idI = contarRegistroInterprete() + 1;
     if(idI == 1){
-        cout << "FALLO APERTURA DEL ARCHIVO, NO EXISTE O ESTA VACIO" << endl;
+        cout << "FALLO APERTURA DEL ARCHIVO" << endl;
     }
     cantor.Cargar(idI, fecha);
     return cantor;
