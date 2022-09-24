@@ -120,7 +120,7 @@ void mostrarGenero(){
 // PUNTO 4 MODIFICAR TIPO DE INSTRUMENTACION
 bool sobreEscribirRegistroGenero(Genero gen, int pos){
     FILE *p;
-    p = fopen(CANCIONES, "rb+"); ///+ le agrega al modo lo que le falta
+    p = fopen(GENEROS, "rb+"); ///+ le agrega al modo lo que le falta
     if(p == NULL)return false;
     fseek(p, sizeof gen * pos, 0);
     bool escribio = fwrite(&gen, sizeof gen, 1, p);
