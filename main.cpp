@@ -1,12 +1,16 @@
 #include <iostream>
 #include <cstring>
 #include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
 const char *CANCIONES = "Canciones.dat";
 const char *INTERPRETES = "Interpretes.dat";
 const char *GENEROS = "Generos.dat";
+const char *RESPALDOCANCIONES = "Canciones.bkp";
+const char *RESPALDOINTERPRETES = "Interpretes.bkp";
+const char *RESPALDOGENEROS = "Generos.bkp";
 
 #include "funcionesGlobales.h"
 #include "clsFecha.h"
@@ -16,6 +20,7 @@ const char *GENEROS = "Generos.dat";
 #include "funcionesGlobalesCancion.h"
 #include "funcionesGlobalesInterprete.h"
 #include "funcionesGlobalesGenero.h"
+#include "funcionesGlobalesConfiguracion.h"
 #include "opcionesMenu.h"
 
 int main(){
@@ -31,9 +36,9 @@ int main(){
                 break;
             case 3: menuGeneros();
                 break;
-            case 4:
+            case 4: menuReportes();
                 break;
-            case 5:
+            case 5: menuConfiguracion();
                 break;
             case 0: return 0;
                 break;

@@ -3,11 +3,15 @@
 
 /// DECLARACION DE MENUS
 
-void menuCanciones();
-
 void menuPrincipal();
 
+void menuCanciones();
+
 void menuGeneros();
+
+//void menuReportes();
+
+//void menuConfiguracion();
 
 /// DEFINICIONES DE MENUS
 
@@ -187,6 +191,113 @@ void menuGeneros(){
                     else{
                         cout << "REGISTRO MODIFICADO" << endl;
                     }
+                break;
+            case 0: return;
+                break;
+            default: cout << "OPCION INCORRECTA" << endl;
+                break;
+        }
+        cout << endl;
+        system("pause");
+    }
+    return;
+}
+
+/// MENU REPORTES
+
+void menuReportes(){
+    int opc, valorAgregarReporte;
+    while(true){
+        system("cls");
+        cout << "MENU REPORTES" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "1) OPCION 1" << endl;
+        cout << "2) OPCION 2" << endl;
+        cout << "3) OPCION 3" << endl;
+        cout << "4) OPCION 4" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "0) VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cin >> opc;
+        system("cls");
+        switch(opc){
+            case 1: system("pause");
+                break;
+            case 2: system("pause");
+                break;
+            case 3: system("pause");
+                break;
+            case 4: system("pause");
+                break;
+            case 0: return;
+                break;
+            default: cout << "OPCION INCORRECTA" << endl;
+                break;
+        }
+        cout << endl;
+        system("pause");
+    }
+    return;
+}
+
+/// MENU CONFIGIRACION
+
+void menuConfiguracion(){
+    int opc, valorAgregarConfiguracion;
+    while(true){
+        system("cls");
+        cout << "MENU CONFIGURACION" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "1) COPIA DE SEGURIDAD DEL ARCHIVO DE CANCIONES" << endl;
+        cout << "2) COPIA DE SEGURIDAD DEL ARCHIVO DE INTERPRETES" << endl;
+        cout << "3) COPIA DE SEGURIDAD DEL ARCHIVO DE GENEROS" << endl;
+        cout << "4) RESTAURAR EL ARCHIVO CANCIONES" << endl;
+        cout << "5) RESTAURAR EL ARCHIVO INTERPRETES" << endl;
+        cout << "6) RESTAURAR EL ARCHIVO GENEROS" << endl;
+        cout << "7) ESTABLECER DATOS DE INICIO" << endl;
+        cout << "-----------------------------" << endl;
+        cout << "0) VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cin >> opc;
+        system("cls");
+        switch(opc){
+            case 1: if(respaldarCanciones()){
+                       cout << "CANCIONES RESPALDADAS EXITOSAMENTE" << endl;
+                        break;
+                    }
+                    cout << "FALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                break;
+            case 2: if(respaldarInterpretes()){
+                       cout << "INTERPRETES RESPALDADOS EXITOSAMENTE" << endl;
+                        break;
+                    }
+                    cout << "FALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                break;
+            case 3: if(respaldarGeneros()){
+                       cout << "GENEROS RESPALDADOS EXITOSAMENTE" << endl;
+                        break;
+                    }
+                    cout << "FALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                break;
+            case 4: if(recuperarCanciones()){
+                        cout << "CANCIONES RECUPERADAS EXITOSAMENTE" << endl;
+                        break;
+                    }
+                    cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
+                break;
+            case 5: if(recuperarInterpretes()){
+                        cout << "INTERPRETES RECUPERADAOS EXITOSAMENTE" << endl;
+                        break;
+                    }
+                    cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
+                break;
+            case 6: if(recuperarGeneros()){
+                        cout << "GENERO RECUPERADOS EXITOSAMENTE" << endl;
+                        break;
+                    }
+                    cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
+                break;
+            case 7: system("pause");
                 break;
             case 0: return;
                 break;
