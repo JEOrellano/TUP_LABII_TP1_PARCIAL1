@@ -32,7 +32,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="clsCancion.h" />
+		<Unit filename="clsFecha.h" />
+		<Unit filename="clsGenero.h" />
+		<Unit filename="clsInterprete.h" />
+		<Unit filename="funcionesGlobales.h" />
+		<Unit filename="funcionesGlobalesCancion.h" />
+		<Unit filename="funcionesGlobalesConfiguracion.h" />
+		<Unit filename="funcionesGlobalesGenero.h" />
+		<Unit filename="funcionesGlobalesInterprete.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="opcionesMenu.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
