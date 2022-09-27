@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1664242945 source:c:\users\anthony\desktop\prueba_1\parcial_1\main.cpp
+	<iostream>
+	<cstring>
+	<ctime>
+	"Cadena.h"
+	"Clase_Fecha.h"
+	"Clase_Cancion.h"
+	"Clase_Interprete.h"
+	"Clase_Genero.h"
+	"Funciones_Clase_Cancion.h"
+	"Funciones_Clase_Interprete.h"
+	"Funciones_Clase_Genero.h"
+	"Funciones_Globales_Configuracion.h"
+	"Menues.h"
+
+1664152581 c:\users\anthony\desktop\prueba_1\parcial_1\cadena.h
+
+1664243304 c:\users\anthony\desktop\prueba_1\parcial_1\menues.h
+
+1664215954 c:\users\anthony\desktop\prueba_1\parcial_1\clase_fecha.h
+
+1664221902 c:\users\anthony\desktop\prueba_1\parcial_1\clase_cancion.h
+
+1664236246 c:\users\anthony\desktop\prueba_1\parcial_1\clase_interprete.h
+
+1664241624 c:\users\anthony\desktop\prueba_1\parcial_1\clase_genero.h
+
+1664238551 c:\users\anthony\desktop\prueba_1\parcial_1\funciones_clase_cancion.h
+
+1664237654 c:\users\anthony\desktop\prueba_1\parcial_1\funciones_clase_interprete.h
+
+1664242853 c:\users\anthony\desktop\prueba_1\parcial_1\funciones_clase_genero.h
+
+1664242893 c:\users\anthony\desktop\prueba_1\parcial_1\funciones_globales_configuracion.h
+

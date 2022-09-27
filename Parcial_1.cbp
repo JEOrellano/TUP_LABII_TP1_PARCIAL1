@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Paricla1TP1parte2" />
+		<Option title="Parcial_1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Paricla1TP1parte2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Parcial_1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Paricla1TP1parte2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Parcial_1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,16 +32,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="clsCancion.h" />
-		<Unit filename="clsFecha.h" />
-		<Unit filename="clsGenero.h" />
-		<Unit filename="clsInterprete.h" />
-		<Unit filename="funcionesGlobales.h" />
-		<Unit filename="funcionesGlobalesCancion.h" />
-		<Unit filename="funcionesGlobalesGenero.h" />
-		<Unit filename="funcionesGlobalesInterprete.h" />
+		<Unit filename="Cadena.h" />
+		<Unit filename="Clase_Cancion.h" />
+		<Unit filename="Clase_Fecha.h" />
+		<Unit filename="Clase_Genero.h" />
+		<Unit filename="Clase_Interprete.h" />
+		<Unit filename="Funciones_Clase_Cancion.h" />
+		<Unit filename="Funciones_Clase_Genero.h" />
+		<Unit filename="Funciones_Clase_Interprete.h" />
+		<Unit filename="Funciones_Globales_Configuracion.h" />
+		<Unit filename="Menues.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="opcionesMenu.h" />
-		<Extensions />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
