@@ -44,6 +44,7 @@
 		<Unit filename="funcionesGlobalesReporte.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="opcionesMenu.h" />
+		<Unit filename="reportes.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
