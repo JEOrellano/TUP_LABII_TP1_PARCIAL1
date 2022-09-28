@@ -20,6 +20,8 @@ const char *RESPALDOGENEROS = "Generos.bkp";
 #include "funcionesGlobalesCancion.h"
 #include "funcionesGlobalesInterprete.h"
 #include "funcionesGlobalesGenero.h"
+#include "funcionesGlobalesReporte.h"
+#include "reportes.h"
 #include "funcionesGlobalesConfiguracion.h"
 #include "opcionesMenu.h"
 

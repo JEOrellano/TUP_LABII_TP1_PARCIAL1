@@ -160,6 +160,8 @@ bool modificarGeneroPrincipalInterprete(){
     }
     /// sobreescribir el registro
     return sobreEscribirRegistroInterprete(cantor, pos);
+    cout << "REGISTRO MODIFICADO" << endl;
+    cout << endl;
 }
 
 // PUNTO 5 ELIMINAR LOGICA INTERPRETE

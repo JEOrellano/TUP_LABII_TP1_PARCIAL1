@@ -211,8 +211,8 @@ void menuReportes(){
         system("cls");
         cout << "MENU REPORTES" << endl;
         cout << "-----------------------------" << endl;
-        cout << "1) OPCION 1" << endl;
-        cout << "2) OPCION 2" << endl;
+        cout << "1) MOSTRAR POR CADA INTERPRETE LA CANTIDAD DE CANCIONES QUE TIENE REGISTRAR" << endl;
+        cout << "2) INFORMAR LAS CANCIONES DE UN GENERO QUE SE INGRESE POR TECLADO" << endl;
         cout << "3) OPCION 3" << endl;
         cout << "4) OPCION 4" << endl;
         cout << "-----------------------------" << endl;
@@ -221,13 +221,15 @@ void menuReportes(){
         cin >> opc;
         system("cls");
         switch(opc){
-            case 1: system("pause");
+            case 1:
+                mostrarCantidadCacionesPorInterprete();
                 break;
-            case 2: system("pause");
+            case 2:
+                mostrarCancionesPorGeneroIngresado();
                 break;
-            case 3: system("pause");
+            case 3:
                 break;
-            case 4: system("pause");
+            case 4:
                 break;
             case 0: return;
                 break;

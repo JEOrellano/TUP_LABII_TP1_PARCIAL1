@@ -71,3 +71,42 @@
 
 1664147322 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\opcionesmenu.h
 
+1664392819 source:c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\main.cpp
+	<iostream>
+	<cstring>
+	<ctime>
+	<cstdlib>
+	"funcionesGlobales.h"
+	"clsFecha.h"
+	"clsCancion.h"
+	"clsInterprete.h"
+	"clsGenero.h"
+	"funcionesGlobalesCancion.h"
+	"funcionesGlobalesInterprete.h"
+	"funcionesGlobalesGenero.h"
+	"funcionesGlobalesReporte.h"
+	"funcionesGlobalesConfiguracion.h"
+	"opcionesMenu.h"
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\funcionesglobales.h
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\clsfecha.h
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\clscancion.h
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\clsinterprete.h
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\clsgenero.h
+
+1664392819 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\funcionesglobalescancion.h
+
+1664237702 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\funcionesglobalesinterprete.h
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\funcionesglobalesgenero.h
+
+1664394644 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\funcionesglobalesreporte.h
+
+1664149734 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\funcionesglobalesconfiguracion.h
+
+1664394645 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\opcionesmenu.h
+

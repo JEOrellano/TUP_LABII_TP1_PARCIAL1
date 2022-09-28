@@ -32,7 +32,6 @@ Cancion cargarCancion(){
     Cancion tema;
     int idC, idI;
     Fecha fecha;
-
     cout << "ID INTERPRETE: ";
     cin >> idI;
     if(validarInterprete(idI) == false){
@@ -46,13 +45,11 @@ Cancion cargarCancion(){
         tema.setEstado(false);
         return tema;
     }
-
     if(validarFecha(fecha) == false){
         cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
         tema.setEstado(false);
         return tema;
     }
-
     idC = contarRegistroCancion() + 1;
     if(idC == 1){
         cout << "FALLO APERTURA DEL ARCHIVO, NO EXISTE O ESTA VACIO" << endl;
@@ -132,10 +129,10 @@ bool mostrarCancionPorId(){ /// FILTRA LISTADO POR ID NUMERO DE CANCION
 
 // PUNTO 3 LISTAR TODAS LAS CANCIONES
 void mostrarCancion(){
-    Cancion tema;
+    Cancion Tema;
     int pos = 0;
-    while(tema.LeerDeDisco(pos)){
-        tema.Mostrar();
+    while(Tema.LeerDeDisco(pos)){
+        Tema.Mostrar();
         cout << endl;
         pos++;
     }
