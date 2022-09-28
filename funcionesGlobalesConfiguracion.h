@@ -1,7 +1,7 @@
-#ifndef FUNCIONES_GLOBALES_CONFIGURACION_H_INCLUDED
-#define FUNCIONES_GLOBALES_CONFIGURACION_H_INCLUDED
+#ifndef FUNCIONESGLOBALESCONFIGURACION_H_INCLUDED
+#define FUNCIONESGLOBALESCONFIGURACION_H_INCLUDED
 
-/// POROTIPOS FUNCIONES PARA REALIZAR EL BACKCOP
+/// POROTIPOS FUNCIONES GLOBALES CONFIGURACION
 
 bool respaldarCanciones(); ///copia de seguridad del archivo Canciones.dat
 
@@ -9,15 +9,13 @@ bool respaldarInterpretes(); ///copia de seguridad del archivo Interpretes.dat
 
 bool respaldarGeneros(); ///copia de seguridad del archivo Generos.dat
 
-/// PROTOTIPOS FUNCIONES PARA REALIZAR LA COPIA DEL BACKCOP EN LOS ARCHIVOS
-
 bool recuperarCanciones(); /// restablece copia de seguridad del archivo Canciones.dat desde Canciones.bkp
 
 bool recuperarInterpretes(); ///restablece copia de seguridad del archivo Interpretes.dat desde Interpretes.bkp
 
 bool recuperarGeneros(); ///restablece copia de seguridad del archivo Generos.dat desde Generos.bkp
 
-/// DEFINICIONES FUNCIONES PARA REALIZAR EL BACKCOP
+/// DEFINICIONES FUNCIONES GLOBALES CONFIGURACION
 
 bool respaldarCanciones(){
     Cancion tema;
@@ -64,8 +62,6 @@ bool respaldarGeneros(){
     return true;
 }
 
-/// DEFINICIONES FUNCIONES PARA REALIZAR LA COPIA DEL BACKCOP EN LOS ARCHIVOS
-
 bool recuperarCanciones(){
     Cancion tema;
     FILE *pDat, *pBkp;
@@ -80,7 +76,7 @@ bool recuperarCanciones(){
     }
     while(fread(&tema, sizeof tema, 1, pBkp) == 1){
             fwrite(&tema, sizeof tema, 1, pDat);
-            cout << "CANCION " << tema.getID_Cancion() << " " << tema.getNombre() << " " << "RECUPERADA" << endl;
+            cout << "CANCION " << tema.getIdCancion() << " " << tema.getNombre() << " " << "RECUPERADA" << endl;
     }
     fclose(pBkp);
     fclose(pDat);
@@ -101,7 +97,7 @@ bool recuperarInterpretes(){
     }
     while(fread(&cantor, sizeof cantor, 1, pBkp) == 1){
             fwrite(&cantor, sizeof cantor, 1, pDat);
-            cout << "INTERPRETE " << cantor.getID_Interprete() << " " <<cantor.getNombre() << " " << "RECUPERADO" << endl;
+            cout << "INTERPRETE " << cantor.getIdInterprete() << " " <<cantor.getNombre() << " " << "RECUPERADO" << endl;
     }
     fclose(pBkp);
     fclose(pDat);
@@ -122,11 +118,11 @@ bool recuperarGeneros(){
     }
     while(fread(&gen, sizeof gen, 1, pBkp) == 1){
             fwrite(&gen, sizeof gen, 1, pDat);
-            cout << "GENERO " << gen.getID_Genero() << " " << gen.getNombre() << " " << "RECUPERADO" <<endl;
+            cout << "GENERO " << gen.getIdGenero() << " " << gen.getNombre() << " " << "RECUPERADO" <<endl;
     }
     fclose(pBkp);
     fclose(pDat);
     return true;
 }
 
-#endif // FUNCIONES_GLOBALES_CONFIGURACION_H_INCLUDED
+#endif // FUNCIONESGLOBALESCONFIGURACION_H_INCLUDED

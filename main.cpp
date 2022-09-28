@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -11,47 +12,43 @@ const char *RESPALDOCANCIONES = "Canciones.bkp";
 const char *RESPALDOINTERPRETES = "Interpretes.bkp";
 const char *RESPALDOGENEROS = "Generos.bkp";
 
-#include "Cadena.h"
-#include "Clase_Fecha.h"
-#include "Clase_Cancion.h"
-#include "Clase_Interprete.h"
-#include "Clase_Genero.h"
-#include "Funciones_Clase_Cancion.h"
-#include "Funciones_Clase_Interprete.h"
-#include "Funciones_Clase_Genero.h"
-#include "Funciones_Globales_Configuracion.h"
-#include "Menues.h"
+#include "funcionesGlobales.h"
+#include "clsFecha.h"
+#include "clsCancion.h"
+#include "clsInterprete.h"
+#include "clsGenero.h"
+#include "funcionesGlobalesCancion.h"
+#include "funcionesGlobalesInterprete.h"
+#include "funcionesGlobalesGenero.h"
+#include "funcionesGlobalesReporte.h"
+#include "reportes.h"
+#include "funcionesGlobalesConfiguracion.h"
+#include "opcionesMenu.h"
 
 int main(){
     int opc;
     while(true){
-        Menu_Principal();
+        menuPrincipal();
         cin >> opc;
+        system("cls");
         switch(opc){
-            case 1:
-                Menu_Canciones();
+            case 1: menuCanciones();
                 break;
-            case 2:
-                Menu_Interpretes();
+            case 2: menuInterpretes();
                 break;
-            case 3:
-                Menu_Generos();
+            case 3: menuGeneros();
                 break;
-            case 4:
-                Menu_Reportes();
+            case 4: menuReportes();
                 break;
-            case 5:
-                Menu_Configuracion();
+            case 5: menuConfiguracion();
                 break;
-            case 0:
-                return 0;
+            case 0: return 0;
                 break;
-            default:
-                system("cls");
-                cout << "\nOPCION INCORRECTA" << endl;
+            default: cout << "OPCION INCORRECTA" << endl;
+                break;
         }
         cout << endl;
+        system("pause");
     }
-
     return 0;
 }
