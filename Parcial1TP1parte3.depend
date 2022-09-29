@@ -110,3 +110,44 @@
 
 1664394645 c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\opcionesmenu.h
 
+1664477221 source:c:\users\esteban\desktop\modelo parcial lab 2\main.cpp
+	<iostream>
+	<cstring>
+	<ctime>
+	<cstdlib>
+	"funcionesGlobales.h"
+	"clsFecha.h"
+	"clsCancion.h"
+	"clsInterprete.h"
+	"clsGenero.h"
+	"funcionesGlobalesCancion.h"
+	"funcionesGlobalesInterprete.h"
+	"funcionesGlobalesGenero.h"
+	"reportes.h"
+	"funcionesGlobalesConfiguracion.h"
+	"opcionesMenu.h"
+
+1664407677 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobales.h
+
+1664407677 c:\users\esteban\desktop\modelo parcial lab 2\clsfecha.h
+
+1664479529 c:\users\esteban\desktop\modelo parcial lab 2\clscancion.h
+
+1664479529 c:\users\esteban\desktop\modelo parcial lab 2\clsinterprete.h
+
+1664479529 c:\users\esteban\desktop\modelo parcial lab 2\clsgenero.h
+
+1664477147 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobalescancion.h
+
+1664407888 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobalesinterprete.h
+
+1664407677 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobalesgenero.h
+
+1664407888 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobalesreporte.h
+
+1664476482 c:\users\esteban\desktop\modelo parcial lab 2\reportes.h
+
+1664479232 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobalesconfiguracion.h
+
+1664476482 c:\users\esteban\desktop\modelo parcial lab 2\opcionesmenu.h
+

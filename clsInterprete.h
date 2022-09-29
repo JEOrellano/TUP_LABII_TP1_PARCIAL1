@@ -122,8 +122,6 @@ void Interprete::Mostrar(){
 
         cout << "FECHA DE INICIO DE ACTIVIDAD: " << endl;
         fechaInicioActividad.Mostrar();
-
-        cout << "ESTADO: " << estado << endl;
     }
 }
 
