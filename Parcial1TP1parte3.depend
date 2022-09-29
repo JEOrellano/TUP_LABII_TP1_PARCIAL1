@@ -35,7 +35,7 @@
 
 1664146727 d:\backup de cursos\utn\tup\2022\1º segundo cuatrimestre\laboratorio de computacion ii\parciales\parcial 1\tp parcial 1\parcial1tp1parte3\funcionesglobalesconfiguracion.h
 
-1664145184 source:c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\main.cpp
+1664477221 source:c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\main.cpp
 	<iostream>
 	<cstring>
 	<ctime>
@@ -48,28 +48,29 @@
 	"funcionesGlobalesCancion.h"
 	"funcionesGlobalesInterprete.h"
 	"funcionesGlobalesGenero.h"
+	"reportes.h"
 	"funcionesGlobalesConfiguracion.h"
 	"opcionesMenu.h"
 
-1664143019 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobales.h
+1664407677 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobales.h
 
-1664043862 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clsfecha.h
+1664407677 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clsfecha.h
 
-1664043862 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clscancion.h
+1664479529 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clscancion.h
 
-1664043862 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clsinterprete.h
+1664479529 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clsinterprete.h
 
-1664043862 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clsgenero.h
+1664479529 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\clsgenero.h
 
-1664043862 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalescancion.h
+1664477147 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalescancion.h
 
-1664056806 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalesinterprete.h
+1664407888 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalesinterprete.h
 
-1664053436 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalesgenero.h
+1664407677 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalesgenero.h
 
-1664146727 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalesconfiguracion.h
+1664479232 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\funcionesglobalesconfiguracion.h
 
-1664147322 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\opcionesmenu.h
+1664476482 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\opcionesmenu.h
 
 1664392819 source:c:\users\anthony\desktop\tup_labii_tp1_parcial1-main\main.cpp
 	<iostream>
@@ -150,4 +151,6 @@
 1664479232 c:\users\esteban\desktop\modelo parcial lab 2\funcionesglobalesconfiguracion.h
 
 1664476482 c:\users\esteban\desktop\modelo parcial lab 2\opcionesmenu.h
+
+1664476482 c:\users\esteban\desktop\escritorio\programas para programar\git\utn\tup_labii_tp1_parcial1\reportes.h
 
