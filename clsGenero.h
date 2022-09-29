@@ -89,8 +89,6 @@ void Genero::Mostrar(){
         cout << "PAIS DE ORIGEN: " << paisOrigen << endl;
 
         cout << "TIPO DE INSTRUMENTACION: " << tipoInstrumentacion << endl;
-
-        cout << "ESTADO: " << estado << endl;
     }
 }
 

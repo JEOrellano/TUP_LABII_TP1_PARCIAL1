@@ -211,10 +211,10 @@ void menuReportes(){
         system("cls");
         cout << "MENU REPORTES" << endl;
         cout << "-----------------------------" << endl;
-        cout << "1) MOSTRAR POR CADA INTERPRETE LA CANTIDAD DE CANCIONES QUE TIENE REGISTRAR" << endl;
-        cout << "2) INFORMAR LAS CANCIONES DE UN GENERO QUE SE INGRESE POR TECLADO" << endl;
-        cout << "3) OPCION 3" << endl;
-        cout << "4) OPCION 4" << endl;
+        cout << "1) LISTAR LOS INTERPRETES ARGENTINOS (NN 5)" << endl;
+        cout << "2) MOSTRAR CANTIDAD DE GENEROS PRO CADA TIPO DE INTRUMNETACION" << endl;
+        cout << "3) CREAR ARCHIVO interpretes2021.dat CON INTERPRETES INICIADOS EN 2021" << endl;
+        cout << "4) MOSREGISTRO INTERPRETES 2021" << endl;
         cout << "-----------------------------" << endl;
         cout << "0) VOLVER MENU PRINCIPAL" << endl;
         cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
@@ -222,14 +222,16 @@ void menuReportes(){
         system("cls");
         switch(opc){
             case 1:
-                mostrarCantidadCacionesPorInterprete();
+                mostrarInterpretesArgentinos();
                 break;
             case 2:
-                mostrarCancionesPorGeneroIngresado();
+                mostrarCantidadGenerosPorTipoInstrumentacion();
                 break;
             case 3:
+                agregarRegistroInterprete2021();
                 break;
             case 4:
+                //mostrarRegistroInterprete2021();
                 break;
             case 0: return;
                 break;
@@ -299,7 +301,7 @@ void menuConfiguracion(){
                     }
                     cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
                 break;
-            case 7: system("pause");
+            case 7: cargarDatosInicio();
                 break;
             case 0: return;
                 break;

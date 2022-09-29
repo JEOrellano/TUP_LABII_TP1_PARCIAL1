@@ -3,17 +3,19 @@
 
 /// POROTIPOS FUNCIONES GLOBALES CONFIGURACION
 
-bool respaldarCanciones(); ///copia de seguridad del archivo Canciones.dat
+bool respaldarCanciones(); /// copia de seguridad del archivo Canciones.dat
 
-bool respaldarInterpretes(); ///copia de seguridad del archivo Interpretes.dat
+bool respaldarInterpretes(); /// copia de seguridad del archivo Interpretes.dat
 
-bool respaldarGeneros(); ///copia de seguridad del archivo Generos.dat
+bool respaldarGeneros(); /// copia de seguridad del archivo Generos.dat
 
 bool recuperarCanciones(); /// restablece copia de seguridad del archivo Canciones.dat desde Canciones.bkp
 
-bool recuperarInterpretes(); ///restablece copia de seguridad del archivo Interpretes.dat desde Interpretes.bkp
+bool recuperarInterpretes(); /// restablece copia de seguridad del archivo Interpretes.dat desde Interpretes.bkp
 
-bool recuperarGeneros(); ///restablece copia de seguridad del archivo Generos.dat desde Generos.bkp
+bool recuperarGeneros(); /// restablece copia de seguridad del archivo Generos.dat desde Generos.bkp
+
+bool cargarDatosInicio(); /// restablece los datos iniciales todos los archivos de archivos Generos.ini, Cnaciones.ini, Interpretes.ini.
 
 /// DEFINICIONES FUNCIONES GLOBALES CONFIGURACION
 
@@ -123,6 +125,65 @@ bool recuperarGeneros(){
     fclose(pBkp);
     fclose(pDat);
     return true;
+}
+
+/// OPCION 7
+
+bool cargarDatosInicio(){
+    /// CANCIONES INICIO
+    Cancion tema;
+    FILE *pDat, *pIni;
+    pDat = fopen(CANCIONES, "wb");
+    if(pDat == NULL){
+        return false;
+    }
+    pIni = fopen("Canciones.ini", "rb");
+    if(pIni == NULL){
+        fclose(pDat);
+        return false;
+    }
+    while(fread(&tema, sizeof tema, 1, pIni) == 1){
+            fwrite(&tema, sizeof tema, 1, pDat);
+            cout << "CANCION " << tema.getIdCancion() << " " << tema.getNombre() << " " << "INICIADA" << endl;
+    }
+    fclose(pIni);
+    fclose(pDat);
+
+    /// INTERPRETES INICIO
+    Interprete cantor;
+    pDat = fopen(INTERPRETES, "wb");
+    if(pDat == NULL){
+        return false;
+    }
+    pIni = fopen("Interpretes.ini", "rb");
+    if(pIni == NULL){
+        fclose(pDat);
+        return false;
+    }
+    while(fread(&cantor, sizeof cantor, 1, pIni) == 1){
+            fwrite(&cantor, sizeof cantor, 1, pDat);
+            cout << "INTERPRETE " << cantor.getIdInterprete() << " " <<cantor.getNombre() << " " << "INICIADO" << endl;
+    }
+    fclose(pIni);
+    fclose(pDat);
+
+    /// GENEROS INICIO
+    Genero gen;
+    pDat = fopen(GENEROS, "wb");
+    if(pDat == NULL){
+        return false;
+    }
+    pIni = fopen("Generos.ini", "rb");
+    if(pIni == NULL){
+        fclose(pDat);
+        return false;
+    }
+    while(fread(&gen, sizeof gen, 1, pIni) == 1){
+            fwrite(&gen, sizeof gen, 1, pDat);
+            cout << "GENERO " << gen.getIdGenero() << " " << gen.getNombre() << " " << "INICIADO" <<endl;
+    }
+    fclose(pIni);
+    fclose(pDat);
 }
 
 #endif // FUNCIONESGLOBALESCONFIGURACION_H_INCLUDED

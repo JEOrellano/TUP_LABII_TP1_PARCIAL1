@@ -123,8 +123,6 @@ void Cancion::Mostrar(){
         cout << "DURACION DE LA CANCION: " << duracion << endl;
 
         cout << "GENERO MUSICAL: " << genero << endl;
-
-        cout << "ESTADO: " << estado << endl;
     }
 }
 
