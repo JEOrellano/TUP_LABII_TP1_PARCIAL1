@@ -3,10 +3,10 @@
 
 class Genero{
     private:
-        int idGenero; // Entero no se repite preferentemente autonumerico
+        int idGenero;
         char nombre[40];
-        int paisOrigen; // entero 1 - 100
-        int tipoInstrumentacion; // entero 1 - 5
+        int paisOrigen;
+        int tipoInstrumentacion;
         bool estado;
     public:
         ///CONSTRUCTOR
@@ -52,45 +52,44 @@ class Genero{
         ~Genero(){}
 };
 
+/////////////////// CARGAR GENERO
+
 bool Genero::Cargar(int idG){
     //cout << "ID GENERO: ";
     //cin >> idGenero;
     setIdGenero(idG);
-
-    cout << "NOMBRE: ";
+    cout << "\nNOMBRE: ";
     cargarCadena(nombre, 39);
     setNombre(nombre);
-
     cout << "PAIS DE ORIGEN: ";
     cin >> paisOrigen;
     if(!setPaisOrigen(paisOrigen)){
-        cout << "PAIS DE ORIGEN DEBE ESTAR ENTRE 1 Y 100" << endl;
+        cout << "\nERROR, PAIS DE ORIGEN DEBE ESTAR ENTRE 1 Y 100" << endl;
         return false;
     }
-
     cout << "TIPO DE INSTRUMENTACION: ";
     cin >> tipoInstrumentacion;
     if(!setTipoInstrumentacion(tipoInstrumentacion)){
-        cout << "TIPO DE INSTRUMENTACION DEBE ESTAR ENTRE 1 Y 5" << endl;
+        cout << "\nERROR, TIPO DE INSTRUMENTACION DEBE ESTAR ENTRE 1 Y 5" << endl;
         return false;
     }
-
     estado = 1;
     setEstado(estado);
     return true;
 }
 
+/////////////////// MOSTRAR GENERO
+
 void Genero::Mostrar(){
     if(estado){
-        cout << "ID GENERO: " << idGenero << endl;
-
+        cout << "\nID GENERO: " << idGenero << endl;
         cout << "NOMBRE: " << nombre << endl;
-
         cout << "PAIS DE ORIGEN: " << paisOrigen << endl;
-
         cout << "TIPO DE INSTRUMENTACION: " << tipoInstrumentacion << endl;
     }
 }
+
+/////////////////// LEER DE DISCO GENERO
 
 bool Genero::LeerDeDisco(int pos){
     FILE *p;
@@ -103,6 +102,8 @@ bool Genero::LeerDeDisco(int pos){
     fclose(p);
     return leyo;
 }
+
+///////////////////  GRABAR EN DISCO GENERO
 
 bool Genero::GrabarEnDisco(){
     FILE *p;

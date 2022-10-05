@@ -1,7 +1,7 @@
 #ifndef FUNCIONESGLOBALESGENERO_H_INCLUDED
 #define FUNCIONESGLOBALESGENERO_H_INCLUDED
 
-/// PROTOTIPOS FUNCIONES GLOBALES GENERO
+/// PROTOTIPOS PUNTO NUMERO 1 AGREGAR GENERO
 
 int contarRegistroGenero();
 
@@ -9,22 +9,30 @@ Genero cargarGenero();
 
 int agregarRegistroGenero();
 
-bool mostrarGeneroPorId();
+/// PROTOTIPOS PUNTO NUMERO 2 LISTAR GENERO POR ID
 
 int buscarIdGenero(int idG);
 
-void mostrarInterprete();
+Genero leerRegistroGenero(int pos);
 
-/// DEFINICIONES FUNCIONES GLOBALES GENERO
+/// PROTOTIPOS PUNTO NUMERO 3 LISTAR TODOS LOS GENEROS
 
-// PUNTO 1 AGREGAR GENERO
+void mostrarGenero();
+
+/// PROTOTIPOS PUNTO NUMERO 4 MODIFICAR TIPO DE INSTRUMENTACION
+
+bool sobreEscribirRegistroGenero(Genero gen, int pos);
+
+bool modificarTipoInstrumentacionGenero();
+
+///////// DEFINICIONES PUNTO 1 AGREGAR GENERO
 
 int contarRegistroGenero(){
     int cant;
     FILE *p;
-    p = fopen(GENEROS, "rb");
+    p = fopen(GENEROS, "ab");
     if(p == NULL){
-        return 0;
+        return -1;
     }
     fseek(p, 0, 2);
     cant = ftell(p)/sizeof(Genero);
@@ -35,11 +43,13 @@ int contarRegistroGenero(){
 Genero cargarGenero(){
     Genero gen;
     int idG;
-
-    idG = contarRegistroGenero() + 1;
-    if(idG == 1){
-        cout << "FALLO APERTURA DEL ARCHIVO, NO EXISTE O ESTA VACIO" << endl;
+    idG = contarRegistroGenero();
+    if(idG == -1){
+        cout << "\nFALLO APERTURA DEL ARCHIVO, NO EXISTE O ESTA VACIO" << endl;
+        gen.setEstado(false);
+        return gen;
     }
+    idG += 1;
     gen.Cargar(idG);
     return gen;
 }
@@ -56,7 +66,8 @@ int agregarRegistroGenero(){
     return -2; /// FALLO GRABAR EN DISCO
 }
 
-// PUNTO 2 LISTAR GENERO POR ID
+///////// DEFINICIONES PUNTO 2 LISTAR GENERO POR ID
+
 int buscarIdGenero(int idG){
     Genero gen;
     int pos = 0;
@@ -77,27 +88,22 @@ Genero leerRegistroGenero(int pos){
     if(p == NULL){
         return gen;
     }
-    /// int desplazamiento = pos * sizeof tema;
-    /// cantidad de bytes que necesito desplazarme
-    /// 0 SEEK_SET DESDE EL PRINCIPIO DEL ARCHIVO
-    /// 1 SEEK_CUR DESDE LA POSICION ACTUACL
-    /// 2 SEEK_END DESDE LA POSICION FINAL
     fseek(p, pos * sizeof gen, 0);
     fread(&gen, sizeof gen, 1, p);
     fclose(p);
     return gen;
 }
 
-bool mostrarGeneroPorId(){ /// FILTRA LISTADO POR ID NUMERO DE INTERPRETE
+bool mostrarGeneroPorId(){
     Genero gen;
     int idG, pos;
     /// buscar el genero a mostrar
-    cout << "INGRESE EL NUMERO DE ID GENERO MUSICAL DEL REGISTRO A MOSTRAR: ";
+    cout << "\nINGRESE EL NUMERO DE ID DEL GENERO MUSICAL A MOSTRAR: ";
     cin >> idG;
     /// leer si existe el genero
     pos = buscarIdGenero(idG);
     if(pos == -1){
-        cout << "NO EXISTE EL ID  DEL GENERO MUSICAL EN EL ARCHIVO" << endl;
+        cout << "\nNO EXISTE EL ID  DEL GENERO MUSICAL EN EL ARCHIVO" << endl;
         return false;
     }
     gen = leerRegistroGenero(pos);
@@ -106,18 +112,19 @@ bool mostrarGeneroPorId(){ /// FILTRA LISTADO POR ID NUMERO DE INTERPRETE
     return true;
 }
 
-// PUNTO 3 LISTAR TODOS LOS GENEROS
+///////// DEFINICIONES PUNTO 3 LISTAR TODOS LOS GENEROS
+
 void mostrarGenero(){
     Genero gen;
     int pos = 0;
     while(gen.LeerDeDisco(pos)){
         gen.Mostrar();
-        cout << endl;
         pos++;
     }
 }
 
-// PUNTO 4 MODIFICAR TIPO DE INSTRUMENTACION
+///////// DEFINICIONES PUNTO 4 MODIFICAR TIPO DE INSTRUMENTACION
+
 bool sobreEscribirRegistroGenero(Genero gen, int pos){
     FILE *p;
     p = fopen(GENEROS, "rb+"); ///+ le agrega al modo lo que le falta
@@ -132,20 +139,20 @@ bool modificarTipoInstrumentacionGenero(){
     Genero gen;
     int idG, pos, tInst;
     /// buscar el genero musical a modificar tipo de instrumentacion
-    cout << "INGRESE EL ID GENERO DEL REGISTRO A MODIFICAR TIPO DE INSTRUMENTACION: ";
+    cout << "\nINGRESE EL ID GENERO DEL REGISTRO A MODIFICAR TIPO DE INSTRUMENTACION: ";
     cin >> idG;
     /// leer si existe el genero musical
     pos = buscarIdGenero(idG);
     if(pos == -1){
-        cout << "NO EXISTE EL ID DE GENERO MUSICAL EN EL ARCHIVO" << endl;
+        cout << "\nNO EXISTE EL ID DE GENERO MUSICAL EN EL ARCHIVO" << endl;
         return false;
     }
     gen = leerRegistroGenero(pos);
     /// cambiar el tipo de instrumento del campo
-    cout << "INGRESE EL NUEVO TIPO DE INSTRUMENTO: ";
+    cout << "\nINGRESE EL NUEVO TIPO DE INSTRUMENTO: ";
     cin >> tInst;
     if(!gen.setTipoInstrumentacion(tInst)){
-        cout << "TIPO DE INSTRUMENTACION DEBE ESTAR ENTRE 1 Y 5" << endl;
+        cout << "\nTIPO DE INSTRUMENTACION DEBE ESTAR ENTRE 1 Y 5" << endl;
         return false;
     }
     /// sobreescribir el registro

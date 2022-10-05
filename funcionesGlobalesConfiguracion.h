@@ -17,7 +17,9 @@ bool recuperarGeneros(); /// restablece copia de seguridad del archivo Generos.d
 
 bool cargarDatosInicio(); /// restablece los datos iniciales todos los archivos de archivos Generos.ini, Cnaciones.ini, Interpretes.ini.
 
-/// DEFINICIONES FUNCIONES GLOBALES CONFIGURACION
+
+
+/// OPCION 1
 
 bool respaldarCanciones(){
     Cancion tema;
@@ -34,6 +36,8 @@ bool respaldarCanciones(){
     return true;
 }
 
+/// OPCION 2
+
 bool respaldarInterpretes(){
     Interprete cantor;
     FILE *p;
@@ -48,6 +52,8 @@ bool respaldarInterpretes(){
     fclose(p);
     return true;
 }
+
+/// OPCION 3
 
 bool respaldarGeneros(){
     Genero gen;
@@ -64,6 +70,8 @@ bool respaldarGeneros(){
     return true;
 }
 
+/// OPCION 4
+
 bool recuperarCanciones(){
     Cancion tema;
     FILE *pDat, *pBkp;
@@ -76,6 +84,7 @@ bool recuperarCanciones(){
         fclose(pDat);
         return false;
     }
+    cout << endl;
     while(fread(&tema, sizeof tema, 1, pBkp) == 1){
             fwrite(&tema, sizeof tema, 1, pDat);
             cout << "CANCION " << tema.getIdCancion() << " " << tema.getNombre() << " " << "RECUPERADA" << endl;
@@ -84,6 +93,8 @@ bool recuperarCanciones(){
     fclose(pDat);
     return true;
 }
+
+/// OPCION 5
 
 bool recuperarInterpretes(){
     Interprete cantor;
@@ -97,6 +108,7 @@ bool recuperarInterpretes(){
         fclose(pDat);
         return false;
     }
+    cout << endl;
     while(fread(&cantor, sizeof cantor, 1, pBkp) == 1){
             fwrite(&cantor, sizeof cantor, 1, pDat);
             cout << "INTERPRETE " << cantor.getIdInterprete() << " " <<cantor.getNombre() << " " << "RECUPERADO" << endl;
@@ -105,6 +117,8 @@ bool recuperarInterpretes(){
     fclose(pDat);
     return true;
 }
+
+/// OPCION 6
 
 bool recuperarGeneros(){
     Genero gen;
@@ -118,6 +132,7 @@ bool recuperarGeneros(){
         fclose(pDat);
         return false;
     }
+    cout << endl;
     while(fread(&gen, sizeof gen, 1, pBkp) == 1){
             fwrite(&gen, sizeof gen, 1, pDat);
             cout << "GENERO " << gen.getIdGenero() << " " << gen.getNombre() << " " << "RECUPERADO" <<endl;
@@ -142,6 +157,7 @@ bool cargarDatosInicio(){
         fclose(pDat);
         return false;
     }
+    cout << endl;
     while(fread(&tema, sizeof tema, 1, pIni) == 1){
             fwrite(&tema, sizeof tema, 1, pDat);
             cout << "CANCION " << tema.getIdCancion() << " " << tema.getNombre() << " " << "INICIADA" << endl;
@@ -160,6 +176,7 @@ bool cargarDatosInicio(){
         fclose(pDat);
         return false;
     }
+    cout << endl;
     while(fread(&cantor, sizeof cantor, 1, pIni) == 1){
             fwrite(&cantor, sizeof cantor, 1, pDat);
             cout << "INTERPRETE " << cantor.getIdInterprete() << " " <<cantor.getNombre() << " " << "INICIADO" << endl;
@@ -178,6 +195,7 @@ bool cargarDatosInicio(){
         fclose(pDat);
         return false;
     }
+    cout << endl;
     while(fread(&gen, sizeof gen, 1, pIni) == 1){
             fwrite(&gen, sizeof gen, 1, pDat);
             cout << "GENERO " << gen.getIdGenero() << " " << gen.getNombre() << " " << "INICIADO" <<endl;

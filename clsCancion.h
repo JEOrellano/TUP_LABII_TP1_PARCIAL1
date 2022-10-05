@@ -3,24 +3,21 @@
 
 class Cancion{
     private:
-        int idCancion; // entero no se repite autonumerico consecutivo
+        int idCancion;
         char nombre[30];
         char nombreAutor[30];
-        int idInterprete; // debe existir en el archivo interprete
-        Fecha fechaEstreno; // valida anterior o igual a la fecha actual
+        int idInterprete;
+        Fecha fechaEstreno;
         float duracion;
-        int genero; // 1 al 10
+        int genero;
         bool estado;
     public:
         ///CONSTRUCTOR
-        Cancion(int c = 0, const char *n = "sin nombre", const char *na = "sin autor", int i = 0, int d = 1, int m = 1, int a = 1900, float t = 0, int g = 0, bool e = false){
+        Cancion(int c = 0, const char *n = "sin nombre", const char *na = "sin autor", int i = 0, float t = 0, int g = 0, bool e = false){
             idCancion = c;
             strcpy(nombre, n);
             strcpy(nombreAutor, na);
             idInterprete = i;
-            fechaEstreno.setDia(d);
-            fechaEstreno.setMes(m);
-            fechaEstreno.setAnio(a);
             duracion = t;
             genero = g;
             estado = e;
@@ -67,64 +64,53 @@ class Cancion{
         ~Cancion(){}
 };
 
-bool Cancion::Cargar(int idC, Fecha fecha, int idI){
-    //cout << "ID CANCION: ";
-    //cin >> idCancion;
-    setIdCancion(idC);
+//////////////CARGAR CANCION
 
+bool Cancion::Cargar(int idC, Fecha fecha, int idI){
+    setIdCancion(idC);
     cout << "NOMBRE: ";
     cargarCadena(nombre, 29);
     setNombre(nombre);
-
     cout << "NOMBRE DEL AUTOR: ";
     cargarCadena(nombreAutor, 29);
     setNombreAutor(nombreAutor);
-
-    //cout << "ID INTERPRETE: ";
-    //cin >> idInterprete;
     setIdInterprete(idI);
-
-    //cout << "FECHA DE ESTRENO: ";
-    //fechaEstreno.Cargar();
     setFechaEstreno(fecha);
-
     cout << "DURACION DE LA CANCION: ";
     cin >> duracion;
     if(!setDuracion(duracion)){
-        cout << "LA DURACION DEBE SER UN VALOR POSITIVO" << endl;
+        cout << "\nLA DURACION DEBE SER UN VALOR POSITIVO" << endl;
+        cout << endl;
         return false;
     }
-
     cout << "GENERO MUSICAL: ";
     cin >> genero;
     if(!setGenero(genero)){
-        cout << "GENERO MUSICAL DEBE ESTAR ENTRE 1 Y 10" << endl;
+        cout << "\nGENERO MUSICAL DEBE ESTAR ENTRE 1 Y 10" << endl;
+        cout << endl;
         return false;
     }
-
     estado = 1;
     setEstado(estado);
     return true;
 }
 
+//////////////MOSTRAR CANCION
+
 void Cancion::Mostrar(){
     if(estado){
-        cout << "ID CANCION: "<< idCancion << endl;
-
+        cout << "\nID CANCION: "<< idCancion << endl;
         cout << "NOMBRE: " << nombre << endl;
-
         cout << "NOMBRE DEL AUTOR: " << nombreAutor << endl;
-
         cout << "ID INTERPRETE: " << idInterprete  << endl;
-
         cout << "FECHA DE ESTRENO: " << endl;
         fechaEstreno.Mostrar();
-
         cout << "DURACION DE LA CANCION: " << duracion << endl;
-
         cout << "GENERO MUSICAL: " << genero << endl;
     }
 }
+
+//////////////LEER DE DISCO CANCION
 
 bool Cancion::LeerDeDisco(int pos){
     FILE *p;
@@ -137,6 +123,8 @@ bool Cancion::LeerDeDisco(int pos){
     fclose(p);
     return leyo;
 }
+
+//////////////GRABRA EN DISCO CANCION
 
 bool Cancion::GrabarEnDisco(){
     FILE *p;

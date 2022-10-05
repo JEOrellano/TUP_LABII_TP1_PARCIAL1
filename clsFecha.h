@@ -3,9 +3,9 @@
 
 class Fecha{
     private:
-        int dia; /// 1 - 31
-        int mes; /// 1 - 12
-        int anio; /// menor o igual al actual
+        int dia;
+        int mes;
+        int anio;
 
     public:
         /// CONSTRUCTOR
@@ -51,36 +51,45 @@ class Fecha{
         ~Fecha(){}
 };
 
+/////////////////////////////// CARGAR FECHA
+
 bool Fecha::Cargar(){
     cout << "DIA: ";
     cin >> dia;
     if(!setDia(dia)){
-        cout << "EL DIA DEBE ESTAR ENTRE 1 Y 31" << endl;
+        cout << "\nEL DIA DEBE ESTAR ENTRE 1 Y 31" << endl;
+        cout << endl;
         return false;
     }
     cout << "MES: ";
     cin >> mes;
     if(!setMes(mes)){
-        cout << "EL MES DEBE ESTAR ENTRE 1 Y 12" << endl;
+        cout << "\nEL MES DEBE ESTAR ENTRE 1 Y 12" << endl;
+        cout << endl;
         return false;
     }
     cout << "ANIO: ";
     cin >> anio;
     if(!setAnio(anio)){
-        cout << "EL AONIO DEBE SER POSTIVO" << endl;
+        cout << "\nEL ANIO DEBE SER POSTIVO" << endl;
+        cout << endl;
         return false;
     }
     return true;
 }
+
+/////////////////////////////// MOSTRAR FECHA
 
 void Fecha::Mostrar(){
     cout << getDia() << "/" << getMes() << "/" << getAnio() << endl;
 }
 
 /// PROTOTIPO VALIDAR FECHA
+
 bool validarFecha(Fecha f);
 
-/// DEFINICION VALIDAR FECHA
+/////////////////////////////// DEFINICION VALIDAR FECHA
+
 bool validarFecha(Fecha f){
     time_t tiempo;
     struct tm *hoy;
@@ -88,17 +97,17 @@ bool validarFecha(Fecha f){
     tiempo = time(NULL);
     hoy = localtime(&tiempo);
     if(f.getAnio() > (1900+hoy->tm_year)){
-        cout << "EL ANIO DEBE SER MENOR O IGUAL AL ACTUAL" << endl;
+        cout << "\nEL ANIO DEBE SER MENOR O IGUAL AL ACTUAL" << endl;
         return false;
     }
     else{
         if(f.getMes() > (hoy->tm_mon+1) && f.getAnio() == (1900+hoy->tm_year)){
-        cout << "EL MES DEBE SER MENOR O IGUAL AL DEL CORRIENTE ANIO" << endl;
+        cout << "\nEL MES DEBE SER MENOR O IGUAL AL DEL CORRIENTE ANIO" << endl;
         return false;
         }
         else{
             if(f.getDia() > hoy->tm_mday && f.getMes() == (hoy->tm_mon+1) && f.getAnio() == (1900+hoy->tm_year)){
-                cout << "LA FECHA DEBE SER MENOR O IGUAL A LA ACTUAL" << endl;
+                cout << "\nLA FECHA DEBE SER MENOR O IGUAL A LA ACTUAL" << endl;
                 return false;
             }
         }
