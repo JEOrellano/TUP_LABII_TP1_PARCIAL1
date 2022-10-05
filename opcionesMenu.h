@@ -184,7 +184,7 @@ void menuGeneros(){
 /////////////////////////////////////////////////////// MENU REPORTES
 
 void menuReportes(){
-    int opc, valorAgregarReporte;
+    int opc;
     while(true){
         system("cls");
         cout << "\n-------------MENU REPORTES------------" << endl;
@@ -192,7 +192,6 @@ void menuReportes(){
         cout << "1. LISTAR LOS INTERPRETES ARGENTINOS (NN 5)" << endl;
         cout << "2. MOSTRAR CANTIDAD DE GENEROS PRO CADA TIPO DE INTRUMNETACION" << endl;
         cout << "3. CREAR ARCHIVO interpretes2021.dat CON INTERPRETES INICIADOS EN 2021" << endl;
-        cout << "4. MOSREGISTRO INTERPRETES 2021" << endl;
         cout << "--------------------------------------" << endl;
         cout << "0. VOLVER MENU PRINCIPAL" << endl;
         cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
@@ -208,9 +207,6 @@ void menuReportes(){
             case 3:
                 agregarRegistroInterprete2021();
                 break;
-            case 4:
-                //mostrarRegistroInterprete2021();
-                break;
             case 0: return;
                 break;
             default: cout << "\nOPCION INCORRECTA" << endl;
@@ -225,7 +221,7 @@ void menuReportes(){
 /////////////////////////////////////////////////////// MENU CONFIGIRACION
 
 void menuConfiguracion(){
-    int opc, valorAgregarConfiguracion;
+    int opc;
     while(true){
         system("cls");
         cout << "\n--------------MENU CONFIGURACION----------------" << endl;

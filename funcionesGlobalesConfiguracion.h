@@ -202,6 +202,7 @@ bool cargarDatosInicio(){
     }
     fclose(pIni);
     fclose(pDat);
+    return true;
 }
 
 #endif // FUNCIONESGLOBALESCONFIGURACION_H_INCLUDED
