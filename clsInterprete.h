@@ -3,24 +3,21 @@
 
 class Interprete{
     private:
-        int idInterprete; // no se repite autonumerico consecutivo
+        int idInterprete;
         char nombre[40];
-        int nacionalidad; // 1 al 100
-        int tipo; // 1 al 5
-        int genero; // 1 al 10
-        Fecha fechaInicioActividad; // valida anterior o igual a la fecha actual
+        int nacionalidad;
+        int tipo;
+        int genero;
+        Fecha fechaInicioActividad;
         bool estado;
     public:
         ///CONSTRUCTOR
-        Interprete(int i = 0, const char *n = "sin nombre", int nac = 0, int t = 0, int g = 0, int d = 1, int m = 1, int a = 1900, bool e = false){
+        Interprete(int i = 0, const char *n = "sin nombre", int nac = 0, int t = 0, int g = 0, bool e = false){
             idInterprete = i;
             strcpy(nombre, n);
             nacionalidad = nac;
             tipo = t;
             genero = g;
-            fechaInicioActividad.setDia(d);
-            fechaInicioActividad.setMes(m);
-            fechaInicioActividad.setAnio(a);
             estado = e;
         }
         /// METODOS
@@ -69,61 +66,52 @@ class Interprete{
         ~Interprete(){}
 };
 
-bool Interprete::Cargar(int idI, Fecha fecha){
-    //cout << "ID INTERPRETE: ";
-    //cin >> idInterprete;
-    setIdInterprete(idI);
+//////////////// CARGAR INTERPRETE
 
+bool Interprete::Cargar(int idI, Fecha fecha){
+    setIdInterprete(idI);
     cout << "NOMBRE: ";
     cargarCadena(nombre, 39);
     setNombre(nombre);
-
     cout << "NACIONALIDAD: ";
     cin >> nacionalidad;
     if(!setNacionalidad(nacionalidad)){
-        cout << "NACIONALIDAD DEBE ESTAR ENTRE 1 Y 100" << endl;
+        cout << "\nNACIONALIDAD DEBE ESTAR ENTRE 1 Y 100" << endl;
         return false;
     }
-
     cout << "TIPO DE INTERPRETE: ";
     cin >> tipo;
     if(!setTipo(tipo)){
-        cout << "TIPO DE INTERPRETE DEBE ESTAR ENTRE 1 Y 5" << endl;
+        cout << "\nTIPO DE INTERPRETE DEBE ESTAR ENTRE 1 Y 5" << endl;
         return false;
     }
-
     cout << "GENERO MUSICAL PRINCIPAL: ";
     cin >> genero;
     if(!setGenero(genero)){
-        cout << "GENERO MUSICAL PRINCIPAL DEBE ESTAR ENTRE 1 Y 10" << endl;
+        cout << "\nGENERO MUSICAL PRINCIPAL DEBE ESTAR ENTRE 1 Y 10" << endl;
         return false;
     }
-
-    //cout << "FECHA DE INICIO DE ACTIVIDAD: ";
-    //fechaInicioActividad.Cargar();
     setFechaInicioActividad(fecha);
-
     estado = 1;
     setEstado(estado);
     return true;
 }
 
+//////////////// MOSTRAR INTERPRETE
+
 void Interprete::Mostrar(){
     if(estado){
-        cout << "ID INTERPRETE: "<< idInterprete << endl;
-
+        cout << "\nID INTERPRETE: "<< idInterprete << endl;
         cout << "NOMBRE: " << nombre << endl;
-
         cout << "NACIONALIDAD: " << nacionalidad  << endl;
-
         cout << "TIPO DE INTERPRETE: " << tipo << endl;
-
         cout << "GENERO MUSICAL: " << genero << endl;
-
         cout << "FECHA DE INICIO DE ACTIVIDAD: " << endl;
         fechaInicioActividad.Mostrar();
     }
 }
+
+//////////////// LEER DE DISCO INTERPRETE
 
 bool Interprete::LeerDeDisco(int pos){
     FILE *p;
@@ -136,6 +124,8 @@ bool Interprete::LeerDeDisco(int pos){
     fclose(p);
     return leyo;
 }
+
+//////////////// GRABAR EN DISCO INTERPRETE
 
 bool Interprete::GrabarEnDisco(){
     FILE *p;
@@ -152,7 +142,7 @@ bool Interprete::GrabarEnDisco(){
 
 bool validarInterprete(int idI);
 
-/// DEFINICION VALIDAR INTERPRETE;
+//////////////// DEFINICION VALIDAR INTERPRETE;
 
 bool validarInterprete(int idI){
     Interprete cantor;
