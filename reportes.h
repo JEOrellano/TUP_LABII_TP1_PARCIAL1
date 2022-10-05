@@ -8,7 +8,6 @@ void mostrarInterpretesArgentinos();
 void mostrarCantidadGenerosPorTipoInstrumentacion();
 
 void agregarRegistroInterprete2021();
-    void mostrarRegistroInterprete2021();
 
 /// DEFINICIONES FUNCIONES REPORTES
 
@@ -18,7 +17,7 @@ void mostrarInterpretesArgentinos(){
     int posI = 0;
     cout << "INTERPRETES ARGENTINOS: " << endl;
     while(cantor.LeerDeDisco(posI++)){
-        if(cantor.getNacionalidad() == 5){
+        if(cantor.getNacionalidad() == 5 && cantor.getEstado()){
             cantor.Mostrar();
             cout << endl;
         }
@@ -105,13 +104,13 @@ void agregarRegistroInterprete2021(){
     int posI = 0;
     int contCancion;
     while(cantor.LeerDeDisco(posI++)){
-        if(cantor.getFechaInicioActividad().getAnio() == 2021){
+        if(cantor.getFechaInicioActividad().getAnio() == 2021 && cantor.getEstado()){
             artista.setIdInterprete(cantor.getIdInterprete());
             artista.setNombre(cantor.getNombre());
             posI2021 = 0;
             contCancion = 0;
             while(tema.LeerDeDisco(posI2021++)){
-                if(tema.getIdInterprete() == cantor.getIdInterprete()){
+                if(tema.getIdInterprete() == cantor.getIdInterprete() && tema.getEstado()){
                    contCancion++;
                 }
             }

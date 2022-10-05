@@ -9,48 +9,41 @@ void menuCanciones();
 
 void menuGeneros();
 
-//void menuReportes();
+void menuReportes();
 
-//void menuConfiguracion();
+void menuConfiguracion();
 
 /// DEFINICIONES DE MENUS
 
-// MENU CANCIONES
+/////////////////////////////////////////////////// MENU CANCIONES
+
 void menuCanciones(){
     int opc, valorAgregarCancion;
     while(true){
         system("cls");
-        cout << "MENU CANCIONES" << endl;
+        cout << "\n--------MENU CANCIONES-------" << endl;
         cout << "-----------------------------" << endl;
-        cout << "1) AGREGAR CANCION" << endl;
-        cout << "2) LISTAR CANCION POR ID" << endl;
-        cout << "3) LISTAR TODAS LAS CANCIONES" << endl;
-        cout << "4) MODIFICAR FECHA DE ESTRENO" << endl;
-        cout << "5) ELIMINAR CANCION" << endl;
+        cout << "1. AGREGAR CANCION" << endl;
+        cout << "2. LISTAR CANCION POR ID" << endl;
+        cout << "3. LISTAR TODAS LAS CANCIONES" << endl;
+        cout << "4. MODIFICAR FECHA DE ESTRENO" << endl;
+        cout << "5. ELIMINAR CANCION" << endl;
         cout << "-----------------------------" << endl;
-        cout << "0) VOLVER MENU PRINCIPAL" << endl;
-        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cout << "0. VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
         cin >> opc;
         system("cls");
         switch(opc){
             case 1: valorAgregarCancion = agregarRegistroCancion();
-                    if(valorAgregarCancion == -2){
-                        cout << "FALLO GRABAR EN DISCO " << endl;
-                        return;
+                    if(valorAgregarCancion == 0){
+                        cout << "\nCANCION CARGADA" << endl;
                     }
-                    else{
-                        if(valorAgregarCancion == -1){
-                            cout << "ERROR DATOS INVALIDOS INGRESADOS O FALLO APERTURA DE ARCHIVO" << endl;
-                            return;
-                        }
+                    else if(valorAgregarCancion == -2){
+                        cout << "\nFALLO AL GRABAR EN EL DISCO" << endl;
                     }
-                    cout << "CANCION CARGADA" << endl;
                 break;
             case 2: if(mostrarCancionPorId() == false){
-                        cout << "ERROR EN LA BUSQUEDA DE LA CANCION" << endl;
-                    }
-                    else{
-                        cout << "CANCION LISTADA" << endl;
+                        cout << "\nERROR EN LA BUSQUEDA DE LA CANCION" << endl;
                     }
                 break;
             case 3: mostrarCancion();
@@ -59,19 +52,19 @@ void menuCanciones(){
                         cout << "ERROR EN LA MODIFICACION DEL REGISTRO " << endl;
                     }
                     else{
-                        cout << "REGISTRO MODIFICADO" << endl;
+                        cout << "\nREGISTRO MODIFICADO" << endl;
                     }
                 break;
             case 5: if(eliminarLogicoCancion() == false){
-                        cout << "ERROR EN EL BORRADO DEL REGISTRO" << endl;
+                        cout << "\nERROR EN EL BORRADO DEL REGISTRO" << endl;
                     }
                     else{
-                        cout << "REGISTRO BORRADO" << endl;
+                        cout << "\nREGISTRO BORRADO" << endl;
                     }
                 break;
             case 0: return;
                 break;
-            default: cout << "OPCION INCORRECTA" << endl;
+            default: cout << "\nOPCION INCORRECTA" << endl;
                 break;
         }
         cout << endl;
@@ -80,63 +73,56 @@ void menuCanciones(){
     return;
 }
 
-// MENU INTERPRETES
+/////////////////////////////////////////////////////// MENU INTERPRETES
+
 void menuInterpretes(){
     int opc, valorAgregarInterprete;
     while(true){
         system("cls");
-        cout << "MENU INTERPRETES" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1) AGREGAR INTERPRETE" << endl;
-        cout << "2) LISTAR INTERPRETE POR ID" << endl;
-        cout << "3) LISTAR TODOS LOS INTERPRETES" << endl;
-        cout << "4) MODIFICAR GENERO MUSICAL PRINCIPAL" << endl;
-        cout << "5) ELIMINAR INTERPRETE" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0) VOLVER MENU PRINCIPAL" << endl;
-        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cout << "\n----------MENU INTERPRETES-----------" << endl;
+        cout << "-------------------------------------" << endl;
+        cout << "1. AGREGAR INTERPRETE" << endl;
+        cout << "2. LISTAR INTERPRETE POR ID" << endl;
+        cout << "3. LISTAR TODOS LOS INTERPRETES" << endl;
+        cout << "4. MODIFICAR GENERO MUSICAL PRINCIPAL" << endl;
+        cout << "5. ELIMINAR INTERPRETE" << endl;
+        cout << "-------------------------------------" << endl;
+        cout << "0. VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
         cin >> opc;
         system("cls");
         switch(opc){
             case 1: valorAgregarInterprete = agregarRegistroInterprete();
-                    if(valorAgregarInterprete== -2){
-                        cout << "FALLO GRABAR EN DISCO " << endl;
-                        return;
+                    if(valorAgregarInterprete == 0){
+                        cout << "\nINTERPRETE CARGADO" << endl;
                     }
-                    else{
-                        if(valorAgregarInterprete == -1){
-                            cout << "ERROR DATOS INVALIDOS INGRESADOS O FALLO APERTURA DE ARCHIVO" << endl;
-                            return;
-                        }
+                    else if(valorAgregarInterprete == -2){
+                        cout << "\nFALLO GRABAR EN DISCO " << endl;
                     }
-                    cout << "INTERPRETE CARGADO" << endl;
                 break;
             case 2: if(mostrarInterpretePorId() == false){
-                        cout << "ERROR EN LA BUSQUEDA DEL INTERPRETE" << endl;
-                    }
-                    else{
-                        cout << "INTERPRETE LISTADO" << endl;
+                        cout << "\nERROR EN LA BUSQUEDA DEL INTERPRETE" << endl;
                     }
                 break;
             case 3: mostrarInterprete();
                 break;
             case 4: if(modificarGeneroPrincipalInterprete() == false){
-                        cout << "ERROR EN LA MODIFICACION DEL REGISTRO " << endl;
+                        cout << "\nERROR EN LA MODIFICACION DEL REGISTRO " << endl;
                     }
                     else{
-                        cout << "REGISTRO MODIFICADO" << endl;
+                        cout << "\nREGISTRO MODIFICADO" << endl;
                     }
                 break;
             case 5: if(eliminarLogicoInterprete() == false){
-                        cout << "ERROR EN EL BORRADO DEL REGISTRO" << endl;
+                        cout << "\nERROR EN EL BORRADO DEL REGISTRO" << endl;
                     }
                     else{
-                        cout << "REGISTRO BORRADO" << endl;
+                        cout << "\nREGISTRO BORRADO" << endl;
                     }
                 break;
             case 0: return;
                 break;
-            default: cout << "OPCION INCORRECTA" << endl;
+            default: cout << "\nOPCION INCORRECTA" << endl;
                 break;
         }
         cout << endl;
@@ -145,56 +131,48 @@ void menuInterpretes(){
     return;
 }
 
-/// MENU GENEROS
+/////////////////////////////////////////////////////// MENU GENEROS
 
 void menuGeneros(){
     int opc, valorAgregarGenero;
     while(true){
         system("cls");
-        cout << "MENU GENEROS" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1) AGREGAR GENERO" << endl;
-        cout << "2) LISTAR GENERO POR ID" << endl;
-        cout << "3) LISTAR TODOS LOS GENEROS" << endl;
-        cout << "4) MODIFICAR TIPO DE INSTRUMENTACION" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0) VOLVER MENU PRINCIPAL" << endl;
-        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cout << "\n------------MENU GENEROS------------" << endl;
+        cout << "------------------------------------" << endl;
+        cout << "1. AGREGAR GENERO" << endl;
+        cout << "2. LISTAR GENERO POR ID" << endl;
+        cout << "3. LISTAR TODOS LOS GENEROS" << endl;
+        cout << "4. MODIFICAR TIPO DE INSTRUMENTACION" << endl;
+        cout << "------------------------------------" << endl;
+        cout << "0. VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
         cin >> opc;
         system("cls");
         switch(opc){
             case 1: valorAgregarGenero = agregarRegistroGenero();
-                    if(valorAgregarGenero == -2){
-                        cout << "FALLO GRABAR EN DISCO " << endl;
-                        return;
+                    if(valorAgregarGenero == 0){
+                        cout << "\nGENERO CARGADO" << endl;
                     }
-                    else{
-                        if(valorAgregarGenero == -1){
-                            cout << "DATOS INVALIDOS O FALLO APERTURA DE ARCHIVO" << endl;
-                            return;
-                        }
+                    else if(valorAgregarGenero == -2){
+                        cout << "\nFALLO GRABAR EN DISCO " << endl;
                     }
-                    cout << "GENERO CARGADO" << endl;
                 break;
             case 2: if(mostrarGeneroPorId() == false){
-                        cout << "ERROR EN LA BUSQUEDA DEL GENERO" << endl;
-                    }
-                    else{
-                        cout << "GENERO LISTADO" << endl;
+                        cout << "\nERROR EN LA BUSQUEDA DEL GENERO" << endl;
                     }
                 break;
             case 3: mostrarGenero();
                 break;
             case 4: if(modificarTipoInstrumentacionGenero() == false){
-                        cout << "ERROR EN LA MODIFICACION DEL REGISTRO " << endl;
+                        cout << "\nERROR EN LA MODIFICACION DEL REGISTRO" << endl;
                     }
                     else{
-                        cout << "REGISTRO MODIFICADO" << endl;
+                        cout << "\nREGISTRO MODIFICADO" << endl;
                     }
                 break;
             case 0: return;
                 break;
-            default: cout << "OPCION INCORRECTA" << endl;
+            default: cout << "\nOPCION INCORRECTA" << endl;
                 break;
         }
         cout << endl;
@@ -203,21 +181,20 @@ void menuGeneros(){
     return;
 }
 
-/// MENU REPORTES
+/////////////////////////////////////////////////////// MENU REPORTES
 
 void menuReportes(){
-    int opc, valorAgregarReporte;
+    int opc;
     while(true){
         system("cls");
-        cout << "MENU REPORTES" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1) LISTAR LOS INTERPRETES ARGENTINOS (NN 5)" << endl;
-        cout << "2) MOSTRAR CANTIDAD DE GENEROS PRO CADA TIPO DE INTRUMNETACION" << endl;
-        cout << "3) CREAR ARCHIVO interpretes2021.dat CON INTERPRETES INICIADOS EN 2021" << endl;
-        cout << "4) MOSREGISTRO INTERPRETES 2021" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0) VOLVER MENU PRINCIPAL" << endl;
-        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cout << "\n-------------MENU REPORTES------------" << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "1. LISTAR LOS INTERPRETES ARGENTINOS (NN 5)" << endl;
+        cout << "2. MOSTRAR CANTIDAD DE GENEROS PRO CADA TIPO DE INTRUMNETACION" << endl;
+        cout << "3. CREAR ARCHIVO interpretes2021.dat CON INTERPRETES INICIADOS EN 2021" << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "0. VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
         cin >> opc;
         system("cls");
         switch(opc){
@@ -230,82 +207,85 @@ void menuReportes(){
             case 3:
                 agregarRegistroInterprete2021();
                 break;
-            case 4:
-                //mostrarRegistroInterprete2021();
-                break;
             case 0: return;
                 break;
-            default: cout << "OPCION INCORRECTA" << endl;
+            default: cout << "\nOPCION INCORRECTA" << endl;
                 break;
         }
-        cout << endl;
         system("pause");
+        cout << endl;
     }
     return;
 }
 
-/// MENU CONFIGIRACION
+/////////////////////////////////////////////////////// MENU CONFIGIRACION
 
 void menuConfiguracion(){
-    int opc, valorAgregarConfiguracion;
+    int opc;
     while(true){
         system("cls");
-        cout << "MENU CONFIGURACION" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1) COPIA DE SEGURIDAD DEL ARCHIVO DE CANCIONES" << endl;
-        cout << "2) COPIA DE SEGURIDAD DEL ARCHIVO DE INTERPRETES" << endl;
-        cout << "3) COPIA DE SEGURIDAD DEL ARCHIVO DE GENEROS" << endl;
-        cout << "4) RESTAURAR EL ARCHIVO CANCIONES" << endl;
-        cout << "5) RESTAURAR EL ARCHIVO INTERPRETES" << endl;
-        cout << "6) RESTAURAR EL ARCHIVO GENEROS" << endl;
-        cout << "7) ESTABLECER DATOS DE INICIO" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0) VOLVER MENU PRINCIPAL" << endl;
-        cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+        cout << "\n--------------MENU CONFIGURACION----------------" << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "1. COPIA DE SEGURIDAD DEL ARCHIVO DE CANCIONES" << endl;
+        cout << "2. COPIA DE SEGURIDAD DEL ARCHIVO DE INTERPRETES" << endl;
+        cout << "3. COPIA DE SEGURIDAD DEL ARCHIVO DE GENEROS" << endl;
+        cout << "4. RESTAURAR EL ARCHIVO CANCIONES" << endl;
+        cout << "5. RESTAURAR EL ARCHIVO INTERPRETES" << endl;
+        cout << "6. RESTAURAR EL ARCHIVO GENEROS" << endl;
+        cout << "7. ESTABLECER DATOS DE INICIO" << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "0. VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
         cin >> opc;
         system("cls");
         switch(opc){
             case 1: if(respaldarCanciones()){
-                       cout << "CANCIONES RESPALDADAS EXITOSAMENTE" << endl;
-                        break;
+                        cout << "\nCANCIONES RESPALDADAS EXITOSAMENTE" << endl;
                     }
-                    cout << "FALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                    else{
+                        cout << "\nFALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                    }
                 break;
             case 2: if(respaldarInterpretes()){
-                       cout << "INTERPRETES RESPALDADOS EXITOSAMENTE" << endl;
-                        break;
+                        cout << "\nINTERPRETES RESPALDADOS EXITOSAMENTE" << endl;
                     }
-                    cout << "FALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                    else{
+                        cout << "\nFALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                    }
                 break;
             case 3: if(respaldarGeneros()){
-                       cout << "GENEROS RESPALDADOS EXITOSAMENTE" << endl;
-                        break;
+                        cout << "\nGENEROS RESPALDADOS EXITOSAMENTE" << endl;
                     }
-                    cout << "FALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                    else{
+                        cout << "\nFALLO CRAR RESPALDO DE ARCHIVO" << endl;
+                    }
                 break;
             case 4: if(recuperarCanciones()){
-                        cout << "CANCIONES RECUPERADAS EXITOSAMENTE" << endl;
-                        break;
+                        cout << "\nCANCIONES RECUPERADAS EXITOSAMENTE" << endl;
                     }
-                    cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
+                    else{
+                        cout << "\nFALLO RECUPERACION DEL ARCHIVO" << endl;
+                    }
                 break;
             case 5: if(recuperarInterpretes()){
-                        cout << "INTERPRETES RECUPERADAOS EXITOSAMENTE" << endl;
-                        break;
+                        cout << "\nINTERPRETES RECUPERADAOS EXITOSAMENTE" << endl;
                     }
-                    cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
+                    else{
+                        cout << "\nFALLO RECUPERACION DEL ARCHIVO" << endl;
+                    }
                 break;
             case 6: if(recuperarGeneros()){
-                        cout << "GENERO RECUPERADOS EXITOSAMENTE" << endl;
-                        break;
+                        cout << "\nGENERO RECUPERADOS EXITOSAMENTE" << endl;
                     }
-                    cout << "FALLO RECUPERACION DEL ARCHIVO" << endl;
+                    else{
+                        cout << "\nFALLO RECUPERACION DEL ARCHIVO" << endl;
+                    }
                 break;
             case 7: cargarDatosInicio();
                 break;
             case 0: return;
                 break;
-            default: cout << "OPCION INCORRECTA" << endl;
+            default: cout << "\nOPCION INCORRECTA" << endl;
                 break;
         }
         cout << endl;
@@ -314,19 +294,20 @@ void menuConfiguracion(){
     return;
 }
 
-/// MENU PRINCIPAL
+/////////////////////////////////////////////////////// MENU PRINCIPAL
+
 void menuPrincipal(){
     system("cls");
-    cout << "MENU PRINCIPAL" << endl;
+    cout << "\n---MENU PRINCIPAL----" << endl;
     cout << "---------------------" << endl;
-    cout << "1) MENU CANCIONES" << endl;
-    cout << "2) MENU INTERPRETES" << endl;
-    cout << "3) MENU GENEROS" << endl;
-    cout << "4) MENU REPORTES" << endl;
-    cout << "5) MENU CONFIGURACION" << endl;
+    cout << "1. MENU CANCIONES" << endl;
+    cout << "2. MENU INTERPRETES" << endl;
+    cout << "3. MENU GENEROS" << endl;
+    cout << "4. MENU REPORTES" << endl;
+    cout << "5. MENU CONFIGURACION" << endl;
     cout << "---------------------" << endl;
-    cout << "0) FIN DEL PROGRAMA" << endl;
-    cout << "\nSELECCIONES UNA DE LAS OPCIONES: ";
+    cout << "0. FIN DEL PROGRAMA" << endl;
+    cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
 }
 
 #endif // OPCIONESMENU_H_INCLUDED

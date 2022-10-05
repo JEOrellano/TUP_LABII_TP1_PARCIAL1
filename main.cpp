@@ -31,19 +31,25 @@ int main(){
         cin >> opc;
         system("cls");
         switch(opc){
-            case 1: menuCanciones();
+            case 1:
+                menuCanciones();
                 break;
-            case 2: menuInterpretes();
+            case 2:
+                menuInterpretes();
                 break;
-            case 3: menuGeneros();
+            case 3:
+                menuGeneros();
                 break;
-            case 4: menuReportes();
+            case 4:
+                menuReportes();
                 break;
-            case 5: menuConfiguracion();
+            case 5:
+                menuConfiguracion();
                 break;
             case 0: return 0;
                 break;
-            default: cout << "OPCION INCORRECTA" << endl;
+            default:
+                cout << "\nOPCION INCORRECTA" << endl;
                 break;
         }
         cout << endl;

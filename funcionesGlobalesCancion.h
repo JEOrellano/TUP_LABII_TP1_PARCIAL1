@@ -1,7 +1,7 @@
 #ifndef FUNCIONESGLOBALESCANCION_H_INCLUDED
 #define FUNCIONESGLOBALESCANCION_H_INCLUDED
 
-/// PROTOTIPOS FUNCIONES GLOBALES CANCION
+/// PROTOTIPOS PUNTO NUMERO 1 AGREGAR CANCION
 
 int contarRegistroCancion();
 
@@ -9,18 +9,36 @@ Cancion cargarCancion();
 
 int agregarRegistroCancion();
 
+/// PROTOTIPOS PUNTO NUMERO 2 LISTAR CANCION POR ID
+
+int buscarIdCancion(int idC);
+
+Cancion leerRegistroCancion(int pos);
+
+bool mostrarCancionPorId();
+
+/// PROTOTIPO PUNTO NUMERO 3 LISTAR TODAS LAS CANCIONES
+
 void mostrarCancion();
 
-/// DEFINICIONES FUNCIONES GLOBALES CANCION
+/// PROTOTIPOS PUNTO NUMERO 4 MODIFICAR FECHA DE ESTRENO
 
-// PUNTO 1 AGREGAR CANCION
+bool sobreEscribirRegistroCancion(Cancion tema, int pos);
+
+bool modificarFechaEstrenoCancion();
+
+/// PROTOTIPO PUNTO NUMERO 5 ELIMINAR LOGICA CANCION
+
+bool eliminarLogicoCancion();
+
+///////// DEFINICIONES PUNTO 1 AGREGAR CANCION
 
 int contarRegistroCancion(){
     int cant;
     FILE *p;
-    p = fopen(CANCIONES, "rb");
+    p = fopen(CANCIONES, "ab");
     if(p == NULL){
-        return 0;
+        return -1;
     }
     fseek(p, 0, 2);
     cant = ftell(p)/sizeof(Cancion);
@@ -32,10 +50,10 @@ Cancion cargarCancion(){
     Cancion tema;
     int idC, idI;
     Fecha fecha;
-    cout << "ID INTERPRETE: ";
+    cout << "\nID INTERPRETE: ";
     cin >> idI;
     if(validarInterprete(idI) == false){
-        cout << "EL INTERPRETE INGERSADO ES INVALIDO. NO ESTA REGISTRADO O FUE BORRADO" << endl;
+        cout << "\nEL INTERPRETE INGERSADO ES INVALIDO. NO ESTA REGISTRADO O FUE BORRADO" << endl;
         tema.setEstado(false);
         return tema;
     }
@@ -46,15 +64,16 @@ Cancion cargarCancion(){
         return tema;
     }
     if(validarFecha(fecha) == false){
-        cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
+        cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A LA DE HOY" << endl;
         tema.setEstado(false);
         return tema;
     }
-    idC = contarRegistroCancion() + 1;
-    if(idC == 1){
-        cout << "FALLO APERTURA DEL ARCHIVO, NO EXISTE O ESTA VACIO" << endl;
+    idC = contarRegistroCancion();
+    if(idC == -1){
+        tema.setEstado(false);
+        return tema;
     }
-
+    idC += 1;
     if(tema.Cargar(idC, fecha, idI) == false){
         cout << "FALLO CARGAR TEMA" << endl;
         tema.setEstado(false);
@@ -75,7 +94,8 @@ int agregarRegistroCancion(){
     return -2; /// FALLO GRABAR EN DISCO
 }
 
-// PUNTO 2 LISTAR CANCION POR ID
+///////// DEFINICIONES PUNTO 2 LISTAR CANCION POR ID
+
 int buscarIdCancion(int idC){
     Cancion tema;
     int pos = 0;
@@ -98,47 +118,44 @@ Cancion leerRegistroCancion(int pos){
     if(p == NULL){
         return tema;
     }
-    /// int desplazamiento = pos * sizeof tema;
-    /// cantidad de bytes que necesito desplazarme
-    /// 0 SEEK_SET DESDE EL PRINCIPIO DEL ARCHIVO
-    /// 1 SEEK_CUR DESDE LA POSICION ACTUACL
-    /// 2 SEEK_END DESDE LA POSICION FINAL
     fseek(p, pos * sizeof tema, 0);
     fread(&tema, sizeof tema, 1, p);
     fclose(p);
     return tema;
 }
 
-bool mostrarCancionPorId(){ /// FILTRA LISTADO POR ID NUMERO DE CANCION
+bool mostrarCancionPorId(){
     Cancion tema;
     int idC, pos;
     /// buscar la cancion a mostrar
-    cout << "INGRESE EL NUMERO DE IDCANCION DEL REGISTRO A MOSTRAR: ";
+    cout << "\nINGRESE EL NUMERO DE ID DE LA CANCION DEL REGISTRO A MOSTRAR: ";
     cin >> idC;
     /// leer si existe la cancion
     pos = buscarIdCancion(idC);
     if(pos == -1){
-        cout << "NO EXISTE EL IDNUMERO DE CANCION EN EL ARCHIVO" << endl;
+        cout << "\nNO EXISTE EL ID DEL NUMERO DE CANCION EN EL ARCHIVO" << endl;
         return false;
     }
     tema = leerRegistroCancion(pos);
     /// LISTAR LA CANCION FILTRADA
     tema.Mostrar();
+    cout << endl;
     return true;
 }
 
-// PUNTO 3 LISTAR TODAS LAS CANCIONES
+///////// DEFINICIONES PUNTO 3 LISTAR TODAS LAS CANCIONES
+
 void mostrarCancion(){
     Cancion Tema;
     int pos = 0;
     while(Tema.LeerDeDisco(pos)){
         Tema.Mostrar();
-        cout << endl;
         pos++;
     }
 }
 
-// PUNTO 4 MODIFICAR FECHA DE ESTRENO
+///////// DEFINICIONES PUNTO 4 MODIFICAR FECHA DE ESTRENO
+
 bool sobreEscribirRegistroCancion(Cancion tema, int pos){
     FILE *p;
     p = fopen(CANCIONES, "rb+"); ///+ le agrega al modo lo que le falta
@@ -154,24 +171,23 @@ bool modificarFechaEstrenoCancion(){
     int idC, pos;
     Fecha fecha;
     /// buscar la cancion a modificar fecha de estreno
-    cout << "INGRESE EL ID CANCION DEL REGISTRO A MODIFICAR FECHA DE ESTRENO: ";
+    cout << "\nINGRESE EL ID CANCION DEL REGISTRO A MODIFICAR FECHA DE ESTRENO: ";
     cin >> idC;
     /// leer si existe la cancion
     pos = buscarIdCancion(idC);
     if(pos == -1){
-        cout << "NO EXISTE EL ID DE CANCION EN EL ARCHIVO" << endl;
+        cout << "\nNO EXISTE EL ID DE CANCION EN EL ARCHIVO" << endl;
+        cout << endl;
         return false;
     }
     tema = leerRegistroCancion(pos);
     /// cambiar la categoria del campo
-    cout << "INGRESE LA NUEVA FECHA DE ESTRENO: " << endl;
+    cout << "\nINGRESE LA NUEVA FECHA DE ESTRENO: " << endl;
     if(fecha.Cargar() == false){
-        cout << "FALLO CARGAR FECHA" << endl;
         tema.setEstado(false);
         return false;
     }
     if(validarFecha(fecha) == false){
-        cout << "LA FECHA INGRESADA ES INVALIDA. DEBER SER MENOR O IGUAL A HOY" << endl;
         return false;
     }
     tema.setFechaEstreno(fecha);
@@ -179,17 +195,18 @@ bool modificarFechaEstrenoCancion(){
     return sobreEscribirRegistroCancion(tema, pos);
 }
 
-// PUNTO 5 ELIMINAR LOGICA CANCION
+///////// DEFINICIONES PUNTO 5 ELIMINAR LOGICA CANCION
+
 bool eliminarLogicoCancion(){
     Cancion tema;
     int idC, pos;
     /// buscar el registro a eliminar
-    cout << "INGRESE EL ID DE CANCION DEL REGISTRO A DAR DE BAJA: ";
+    cout << "\nINGRESE EL ID DE CANCION DEL REGISTRO A DAR DE BAJA: ";
     cin >> idC;
     /// leer si existe el registro
     pos = buscarIdCancion(idC);
     if(pos == -1){
-        cout << "NO EXISTE EL ID DE CANCION EN EL ARCHIVO" << endl;
+        cout << "\nNO EXISTE EL ID DE CANCION EN EL ARCHIVO" << endl;
         return false;
     }
     tema = leerRegistroCancion(pos);
@@ -198,6 +215,5 @@ bool eliminarLogicoCancion(){
     /// sobreescribir el registro
     return sobreEscribirRegistroCancion(tema, pos);
 }
-
 
 #endif // FUNCIONESGLOBALESCANCION_H_INCLUDED
