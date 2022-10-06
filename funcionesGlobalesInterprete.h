@@ -117,17 +117,14 @@ Interprete leerRegistroInterprete(int pos){
 bool mostrarInterpretePorId(){
     Interprete cantor;
     int idI, pos;
-    /// buscar el interprete a mostrar
     cout << "\nINGRESE EL NUMERO DE ID INTERPRETE DEL REGISTRO A MOSTRAR: ";
     cin >> idI;
-    /// leer si existe el interprete
     pos = buscarIdInterprete(idI);
     if(pos == -1){
         cout << "\nNO EXISTE EL ID NUMERO DE INTERPRETE EN EL ARCHIVO" << endl;
         return false;
     }
     cantor = leerRegistroInterprete(pos);
-    /// LISTAR EL INTERPRETE FILTRADO
     cout << endl;
     cantor.Mostrar();
     return true;
@@ -148,7 +145,7 @@ void mostrarInterprete(){
 
 bool sobreEscribirRegistroInterprete(Interprete cantor, int pos){
     FILE *p;
-    p = fopen(INTERPRETES, "rb+"); ///+ le agrega al modo lo que le falta
+    p = fopen(INTERPRETES, "rb+");
     if(p == NULL)return false;
     fseek(p, sizeof cantor * pos, 0);
     bool escribio = fwrite(&cantor, sizeof cantor, 1, p);
@@ -159,24 +156,20 @@ bool sobreEscribirRegistroInterprete(Interprete cantor, int pos){
 bool modificarGeneroPrincipalInterprete(){
     Interprete cantor;
     int idI, pos, genMus;
-    /// buscar el interprete a modificar genero musical principal
     cout << "\nINGRESE EL ID INTERPRETE DEL REGISTRO A MODIFICAR: ";
     cin >> idI;
-    /// leer si existe el interprete
     pos = buscarIdInterprete(idI);
     if(pos == -1){
         cout << "\nNO EXISTE EL ID DE INTERPRETE EN EL ARCHIVO" << endl;
         return false;
     }
     cantor = leerRegistroInterprete(pos);
-    /// cambiar el genero musical del campo
     cout << "\nINGRESE EL NUEVO GENERO MUSICAL PRINCIPAL: ";
     cin >> genMus;
     if(cantor.setGenero(genMus) == false){
         cout << "\nEL GENERO MUSICAL INGRESADO ES INVALIDO. DEBER SER 1 AL 10" << endl;
         return false;
     }
-    /// sobreescribir el registro
     return sobreEscribirRegistroInterprete(cantor, pos);
 }
 
@@ -185,19 +178,15 @@ bool modificarGeneroPrincipalInterprete(){
 bool eliminarLogicoInterprete(){
     Interprete cantor;
     int idI, pos;
-    /// buscar el registro a eliminar
     cout << "\nINGRESE EL ID DE INTERPRETE DEL REGISTRO A DAR DE BAJA: ";
     cin >> idI;
-    /// leer si existe el registro
     pos = buscarIdInterprete(idI);
     if(pos == -1){
         cout << "\nNO EXISTE EL ID DE INTERPRETE EN EL ARCHIVO" << endl;
         return false;
     }
     cantor = leerRegistroInterprete(pos);
-    /// cambiar el estado del campo
     cantor.setEstado(false);
-    /// sobreescribir el registro
     return sobreEscribirRegistroInterprete(cantor, pos);
 }
 
