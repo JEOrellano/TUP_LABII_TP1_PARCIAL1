@@ -41,6 +41,7 @@
 		<Unit filename="funcionesGlobalesConfiguracion.h" />
 		<Unit filename="funcionesGlobalesGenero.h" />
 		<Unit filename="funcionesGlobalesInterprete.h" />
+		<Unit filename="funcionesGlobalesReporte.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="opcionesMenu.h" />
 		<Unit filename="reportes.h" />

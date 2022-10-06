@@ -127,17 +127,14 @@ Cancion leerRegistroCancion(int pos){
 bool mostrarCancionPorId(){
     Cancion tema;
     int idC, pos;
-    /// buscar la cancion a mostrar
     cout << "\nINGRESE EL NUMERO DE ID DE LA CANCION DEL REGISTRO A MOSTRAR: ";
     cin >> idC;
-    /// leer si existe la cancion
     pos = buscarIdCancion(idC);
     if(pos == -1){
         cout << "\nNO EXISTE EL ID DEL NUMERO DE CANCION EN EL ARCHIVO" << endl;
         return false;
     }
     tema = leerRegistroCancion(pos);
-    /// LISTAR LA CANCION FILTRADA
     tema.Mostrar();
     cout << endl;
     return true;
@@ -158,7 +155,7 @@ void mostrarCancion(){
 
 bool sobreEscribirRegistroCancion(Cancion tema, int pos){
     FILE *p;
-    p = fopen(CANCIONES, "rb+"); ///+ le agrega al modo lo que le falta
+    p = fopen(CANCIONES, "rb+");
     if(p == NULL)return false;
     fseek(p, sizeof tema * pos, 0);
     bool escribio = fwrite(&tema, sizeof tema, 1, p);
@@ -170,10 +167,8 @@ bool modificarFechaEstrenoCancion(){
     Cancion tema;
     int idC, pos;
     Fecha fecha;
-    /// buscar la cancion a modificar fecha de estreno
     cout << "\nINGRESE EL ID CANCION DEL REGISTRO A MODIFICAR FECHA DE ESTRENO: ";
     cin >> idC;
-    /// leer si existe la cancion
     pos = buscarIdCancion(idC);
     if(pos == -1){
         cout << "\nNO EXISTE EL ID DE CANCION EN EL ARCHIVO" << endl;
@@ -181,7 +176,6 @@ bool modificarFechaEstrenoCancion(){
         return false;
     }
     tema = leerRegistroCancion(pos);
-    /// cambiar la categoria del campo
     cout << "\nINGRESE LA NUEVA FECHA DE ESTRENO: " << endl;
     if(fecha.Cargar() == false){
         tema.setEstado(false);
@@ -191,7 +185,6 @@ bool modificarFechaEstrenoCancion(){
         return false;
     }
     tema.setFechaEstreno(fecha);
-    /// sobreescribir el registro
     return sobreEscribirRegistroCancion(tema, pos);
 }
 
@@ -200,19 +193,15 @@ bool modificarFechaEstrenoCancion(){
 bool eliminarLogicoCancion(){
     Cancion tema;
     int idC, pos;
-    /// buscar el registro a eliminar
     cout << "\nINGRESE EL ID DE CANCION DEL REGISTRO A DAR DE BAJA: ";
     cin >> idC;
-    /// leer si existe el registro
     pos = buscarIdCancion(idC);
     if(pos == -1){
         cout << "\nNO EXISTE EL ID DE CANCION EN EL ARCHIVO" << endl;
         return false;
     }
     tema = leerRegistroCancion(pos);
-    /// cambiar el estado del campo
     tema.setEstado(false);
-    /// sobreescribir el registro
     return sobreEscribirRegistroCancion(tema, pos);
 }
 

@@ -10,6 +10,8 @@ void menuCanciones();
 void menuGeneros();
 
 void menuReportes();
+    void subMenuReportes();
+    void subMenuParcial();
 
 void menuConfiguracion();
 
@@ -70,7 +72,6 @@ void menuCanciones(){
         cout << endl;
         system("pause");
     }
-    return;
 }
 
 /////////////////////////////////////////////////////// MENU INTERPRETES
@@ -128,7 +129,6 @@ void menuInterpretes(){
         cout << endl;
         system("pause");
     }
-    return;
 }
 
 /////////////////////////////////////////////////////// MENU GENEROS
@@ -178,7 +178,6 @@ void menuGeneros(){
         cout << endl;
         system("pause");
     }
-    return;
 }
 
 /////////////////////////////////////////////////////// MENU REPORTES
@@ -187,13 +186,83 @@ void menuReportes(){
     int opc;
     while(true){
         system("cls");
-        cout << "\n-------------MENU REPORTES------------" << endl;
-        cout << "--------------------------------------" << endl;
-        cout << "1. LISTAR LOS INTERPRETES ARGENTINOS (NN 5)" << endl;
-        cout << "2. MOSTRAR CANTIDAD DE GENEROS PRO CADA TIPO DE INTRUMNETACION" << endl;
-        cout << "3. CREAR ARCHIVO interpretes2021.dat CON INTERPRETES INICIADOS EN 2021" << endl;
-        cout << "--------------------------------------" << endl;
+        cout << "\n----------MENU REPORTES----------" << endl;
+        cout << "---------------------------------" << endl;
+        cout << "1. PREGUNTAS DEL PARCIAL NUMERO 1" << endl;
+        cout << "2. PREGUNTAS AL SISTEMA" << endl;
+        cout << "---------------------------------" << endl;
         cout << "0. VOLVER MENU PRINCIPAL" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
+        cin >> opc;
+        system("cls");
+        switch(opc){
+            case 1:
+                subMenuParcial();
+                break;
+            case 2:
+                subMenuReportes();
+                break;
+            case 0: return;
+                break;
+            default: cout << "\nOPCION INCORRECTA" << endl;
+                break;
+        }
+        system("pause");
+        cout << endl;
+    }
+}
+
+/////////////////////////////////////////////////////// SUB-MENU PARCIAL-1
+
+void subMenuParcial(){
+    int opc;
+    while(true){
+        system("cls");
+        cout << "\n-SUB-MENU PARCIAL-" << endl;
+        cout << "------------------" << endl;
+        cout << "1. PUNTO NUMERO 1" << endl;
+        cout << "2. PUNTO NUMERO 2" << endl;
+        cout << "3. PUNTO NUMERO 3" << endl;
+        cout << "4. PUNTO NUMERO 4" << endl;
+        cout << "------------------" << endl;
+        cout << "0. REGRESAR" << endl;
+        cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
+        cin >> opc;
+        system("cls");
+        switch(opc){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 0: return;
+                break;
+            default: cout << "\nOPCION INCORRECTA" << endl;
+                break;
+        }
+        system("pause");
+        cout << endl;
+    }
+}
+
+/////////////////////////////////////////////////////// SUB-MENU REPORTES
+
+void subMenuReportes(){
+    int opc;
+    while(true){
+        system("cls");
+        cout << "\n--------------------------SUB-MENU REPORTES--------------------" << endl;
+        cout << "---------------------------------------------------------------" << endl;
+        cout << "1. LISTAR LOS INTERPRETES ARGENTINOS (NN 5)" << endl;
+        cout << "2. MOSTRAR CANTIDAD DE GENEROS POR CADA TIPO DE INSTRUMENTACION" << endl;
+        cout << "3. CREAR ARCHIVO CON INTERPRETES INICIADOS EN 2021" << endl;
+        cout << "4. MOSTRAR LA CANTIDAD DE CANCIONES POR INTERPRETE" << endl;
+        cout << "5. MOSTRAR CANCIONES POR GENERO" << endl;
+        cout << "---------------------------------------------------------------" << endl;
+        cout << "0. REGRESAR" << endl;
         cout << "\nSELECCIONE UNA DE LAS OPCIONES: ";
         cin >> opc;
         system("cls");
@@ -207,6 +276,12 @@ void menuReportes(){
             case 3:
                 agregarRegistroInterprete2021();
                 break;
+            case 4:
+                mostrarCantidadCacionesPorInterprete();
+                break;
+            case 5:
+                mostrarCancionesPorGeneroIngresado();
+                break;
             case 0: return;
                 break;
             default: cout << "\nOPCION INCORRECTA" << endl;
@@ -215,7 +290,6 @@ void menuReportes(){
         system("pause");
         cout << endl;
     }
-    return;
 }
 
 /////////////////////////////////////////////////////// MENU CONFIGIRACION
@@ -291,7 +365,6 @@ void menuConfiguracion(){
         cout << endl;
         system("pause");
     }
-    return;
 }
 
 /////////////////////////////////////////////////////// MENU PRINCIPAL
